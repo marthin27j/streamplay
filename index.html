@@ -1,651 +1,881 @@
-<!doctype html>
-<html lang="es" class="h-full">
- <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>StreamPlay — Entretenimiento Digital</title>
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
-  <script src="/_sdk/element_sdk.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            outfit: ['Outfit', 'sans-serif'],
-            mono: ['Space Mono', 'monospace']
-          }
-        }
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Streaming Premium | Planes por 30 días</title>
+  <meta
+    name="description"
+    content="Pantallas por 30 días con activación rápida, atención por WhatsApp y medios de pago disponibles."
+  />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #121933;
+      --card: rgba(255,255,255,0.07);
+      --card-strong: rgba(255,255,255,0.1);
+      --text: #f5f7ff;
+      --muted: #cfd6ff;
+      --yellow: #ffd54a;
+      --blue: #5ba7ff;
+      --purple: #8a5cff;
+      --green: #25d366;
+      --border: rgba(255,255,255,0.12);
+      --shadow: 0 10px 30px rgba(0,0,0,0.3);
+      --radius: 18px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(138,92,255,0.22), transparent 30%),
+        radial-gradient(circle at top right, rgba(91,167,255,0.18), transparent 28%),
+        linear-gradient(180deg, #090d1a 0%, #0b1020 45%, #0e1530 100%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(9, 13, 26, 0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      gap: 16px;
+    }
+
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+
+    .brand span {
+      color: var(--yellow);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: 0.25s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--yellow), #ffb700);
+      color: #151515;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.03);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .hero {
+      padding: 72px 0 48px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.05;
+      margin-bottom: 18px;
+      font-weight: 900;
+    }
+
+    .hero h1 .highlight {
+      color: var(--yellow);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 700px;
+      margin-bottom: 24px;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .badge {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-size: 0.92rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .preview-panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .preview-title {
+      font-size: 1rem;
+      color: var(--yellow);
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .mini-card {
+      min-height: 105px;
+      border-radius: 18px;
+      background:
+        linear-gradient(145deg, rgba(91,167,255,0.18), rgba(138,92,255,0.18)),
+        rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .mini-card span {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .mini-card small {
+      color: var(--muted);
+    }
+
+    section {
+      padding: 64px 0;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 34px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      margin-bottom: 10px;
+    }
+
+    .section-head p {
+      color: var(--muted);
+    }
+
+    .catalog {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .service {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top right, rgba(255,213,74,0.12), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(138,92,255,0.14), transparent 25%);
+      pointer-events: none;
+    }
+
+    .service-name {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .service-price {
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: var(--yellow);
+      margin-bottom: 6px;
+    }
+
+    .service-time {
+      color: var(--muted);
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+
+    .service-preview {
+      height: 74px;
+      border-radius: 14px;
+      margin-bottom: 16px;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)),
+        linear-gradient(135deg, rgba(91,167,255,0.25), rgba(138,92,255,0.25));
+      border: 1px solid rgba(255,255,255,0.1);
+      filter: blur(0.2px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffffcc;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature-box,
+    .payment-box,
+    .review-card,
+    .faq-item,
+    .step {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .feature-box h3,
+    .payment-box h3,
+    .review-card h3,
+    .step h3,
+    .faq-item h3 {
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+    }
+
+    .feature-box p,
+    .payment-box p,
+    .review-card p,
+    .step p,
+    .faq-item p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .step-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--yellow), #ffb700);
+      color: #111;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .payments-grid,
+    .reviews-grid,
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .payment-tag {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .rating {
+      font-size: 1.1rem;
+      color: #ffd54a;
+      margin-bottom: 10px;
+    }
+
+    .contact-box {
+      background:
+        linear-gradient(145deg, rgba(91,167,255,0.18), rgba(138,92,255,0.18)),
+        var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .contact-box h2 {
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      margin-bottom: 12px;
+    }
+
+    .contact-box p {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .contact-number {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 900;
+      color: var(--yellow);
+      margin-bottom: 22px;
+    }
+
+    footer {
+      padding: 28px 0 50px;
+      color: var(--muted);
+    }
+
+    .footer-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--border);
+      padding-top: 22px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 1000;
+      background: var(--green);
+      color: white;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 1.6rem;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.35);
+    }
+
+    .note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
+    @media (max-width: 1100px) {
+      .catalog {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .payments-grid,
+      .reviews-grid,
+      .faq-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
-  </script>
-  <style>
-    html, body { height: 100%; margin: 0; }
-    * { box-sizing: border-box; }
 
-    .app-scroll { height: 100%; overflow-y: auto; overflow-x: hidden; scroll-behavior: smooth; }
+    @media (max-width: 860px) {
+      .hero-grid,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
 
-    /* Animated gradient background */
-    .hero-gradient {
-      background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 30%, #0a1628 60%, #0a0a1a 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-gradient::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(ellipse at 30% 20%, rgba(99, 50, 255, 0.12) 0%, transparent 50%),
-                  radial-gradient(ellipse at 70% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
-                  radial-gradient(ellipse at 50% 50%, rgba(250, 204, 21, 0.04) 0%, transparent 50%);
-      animation: aurora 20s ease-in-out infinite;
-    }
-    @keyframes aurora {
-      0%, 100% { transform: translate(0, 0) rotate(0deg); }
-      33% { transform: translate(2%, -2%) rotate(1deg); }
-      66% { transform: translate(-1%, 1%) rotate(-1deg); }
+      .catalog {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
     }
 
-    /* Glow effects */
-    .glow-blue { box-shadow: 0 0 30px rgba(59, 130, 246, 0.15), 0 0 60px rgba(59, 130, 246, 0.05); }
-    .glow-purple { box-shadow: 0 0 30px rgba(139, 92, 246, 0.15), 0 0 60px rgba(139, 92, 246, 0.05); }
-    .glow-yellow { box-shadow: 0 0 20px rgba(250, 204, 21, 0.2); }
+    @media (max-width: 560px) {
+      .catalog,
+      .steps,
+      .payments-grid,
+      .reviews-grid,
+      .faq-grid,
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
 
-    /* Card hover */
-    .service-card {
-      background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
-      border: 1px solid rgba(255,255,255,0.08);
-      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      position: relative;
-      overflow: hidden;
-    }
-    .service-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(145deg, rgba(99, 50, 255, 0.08) 0%, rgba(59, 130, 246, 0.05) 100%);
-      opacity: 0;
-      transition: opacity 0.4s;
-    }
-    .service-card:hover::before { opacity: 1; }
-    .service-card:hover {
-      border-color: rgba(139, 92, 246, 0.3);
-      transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3), 0 0 30px rgba(139, 92, 246, 0.1);
-    }
+      .hero {
+        padding-top: 52px;
+      }
 
-    /* WhatsApp button pulse */
-    .wa-btn {
-      background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-    .wa-btn::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .wa-btn:hover::after { opacity: 1; }
-    .wa-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3); }
+      .btn {
+        width: 100%;
+      }
 
-    /* Primary CTA */
-    .cta-primary {
-      background: linear-gradient(135deg, #6332ff 0%, #3b82f6 100%);
-      transition: all 0.3s ease;
-    }
-    .cta-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(99, 50, 255, 0.3); }
-
-    /* Floating WA button */
-    .wa-float {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 999;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: #25D366;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
-      animation: float-pulse 2s ease-in-out infinite;
-      transition: transform 0.3s;
-    }
-    .wa-float:hover { transform: scale(1.1); }
-    @keyframes float-pulse {
-      0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
-      50% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.6); }
-    }
-
-    /* Testimonial card */
-    .testimonial-card {
-      background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
-      border: 1px solid rgba(255,255,255,0.08);
-      transition: all 0.3s ease;
-    }
-    .testimonial-card:hover {
-      border-color: rgba(250, 204, 21, 0.2);
-      transform: translateY(-2px);
-    }
-
-    /* Payment card */
-    .payment-card {
-      background: linear-gradient(145deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
-      border: 1px solid rgba(255,255,255,0.08);
-      transition: all 0.3s ease;
-    }
-    .payment-card:hover { border-color: rgba(59, 130, 246, 0.3); }
-
-    /* Badge style */
-    .trust-badge {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      backdrop-filter: blur(10px);
-    }
-
-    /* Step circle */
-    .step-circle {
-      background: linear-gradient(135deg, #6332ff 0%, #3b82f6 100%);
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 1.25rem;
-      color: white;
-      flex-shrink: 0;
-    }
-
-    /* Section divider glow */
-    .section-glow {
-      height: 1px;
-      background: linear-gradient(90deg, transparent 0%, rgba(139, 92, 246, 0.3) 50%, transparent 100%);
-    }
-
-    /* Scroll reveal animation */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Star rating */
-    .star { color: #facc15; }
-
-    /* Price tag styling */
-    .price-tag {
-      background: linear-gradient(135deg, rgba(250, 204, 21, 0.15) 0%, rgba(250, 204, 21, 0.05) 100%);
-      border: 1px solid rgba(250, 204, 21, 0.25);
-    }
-
-    /* Service icon containers */
-    .service-icon {
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.4rem;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-
-    /* Benefit card */
-    .benefit-card {
-      background: linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.01) 100%);
-      border: 1px solid rgba(255,255,255,0.07);
-      transition: all 0.3s ease;
-    }
-    .benefit-card:hover {
-      border-color: rgba(99, 50, 255, 0.25);
-      transform: translateY(-3px);
-    }
-
-    .nav-glass {
-      background: rgba(10, 10, 26, 0.85);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      .hero-actions {
+        flex-direction: column;
+      }
     }
   </style>
-  <style>body { box-sizing: border-box; }</style>
-  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
- </head>
- <body class="h-full bg-[#0a0a1a] text-white font-outfit">
-  <div class="app-scroll" id="app-wrapper">
-   <!-- NAVBAR -->
-   <nav class="nav-glass fixed top-0 left-0 w-full z-50 px-4 py-3">
-    <div class="max-w-6xl mx-auto flex items-center justify-between">
-     <div class="flex items-center gap-2">
-      <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 via-blue-500 to-cyan-500 flex items-center justify-center shadow-lg">
-       <i data-lucide="play" class="w-6 h-6 text-white"></i>
-      </div><span id="nav-brand" class="text-lg font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">StreamPlay</span>
-     </div>
-     <div class="hidden md:flex items-center gap-6 text-sm text-gray-400">
-      <a href="#catalogo" class="hover:text-white transition-colors">Catálogo</a> <a href="#beneficios" class="hover:text-white transition-colors">Beneficios</a> <a href="#como-comprar" class="hover:text-white transition-colors">Cómo Comprar</a> <a href="#testimonios" class="hover:text-white transition-colors">Opiniones</a>
-     </div><a href="https://api.whatsapp.com/send/?phone=573154712844&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener noreferrer" class="wa-btn text-white text-sm font-semibold px-4 py-2 rounded-full flex items-center gap-2">
-      <svg class="w-4 h-4" viewbox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-      </svg> Contactar </a>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="#" class="brand">Stream<span>Plus</span></a>
+      <nav class="nav-links">
+        <a href="#catalogo">Precios</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#pagos">Medios de pago</a>
+        <a href="#calificaciones">Calificaciones</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20más%20información%20sobre%20las%20pantallas" target="_blank">WhatsApp</a>
+      </nav>
     </div>
-   </nav><!-- HERO SECTION -->
-   <section class="hero-gradient relative pt-28 pb-20 px-4 md:pt-36 md:pb-28">
-    <div class="relative z-10 max-w-6xl mx-auto">
-     <div class="text-center mb-12">
-      <div class="inline-flex items-center gap-2 bg-purple-500/10 border border-purple-500/20 rounded-full px-4 py-1.5 mb-6 text-sm text-purple-300">
-       <i data-lucide="sparkles" class="w-4 h-4"></i> <span>Entretenimiento digital premium</span>
-      </div>
-      <h1 id="hero-title" class="text-4xl md:text-6xl lg:text-7xl font-900 leading-tight mb-6 tracking-tight">Todo tu <span class="bg-gradient-to-r from-purple-400 via-blue-400 to-yellow-400 bg-clip-text text-transparent">entretenimiento</span><br>
-        en un solo lugar</h1>
-      <p id="hero-subtitle" class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-8 leading-relaxed">Pantallas por 30 días con activación rápida, atención personalizada y precios accesibles</p>
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
-       <a href="https://api.whatsapp.com/send/?phone=573154712844&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener noreferrer" class="wa-btn text-white font-bold px-8 py-4 rounded-full flex items-center gap-3 text-lg shadow-lg">
-        <svg class="w-6 h-6" viewbox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-        </svg> Comprar por WhatsApp </a> <a href="#catalogo" class="cta-primary text-white font-semibold px-8 py-4 rounded-full flex items-center gap-2 text-lg"> Ver precios <i data-lucide="arrow-down" class="w-5 h-5"></i> </a>
-      </div>
-     </div><!-- Trust badges -->
-     <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto mb-14">
-      <div class="trust-badge rounded-xl p-3 text-center">
-       <i data-lucide="zap" class="w-5 h-5 text-yellow-400 mx-auto mb-1"></i>
-       <p class="text-sm font-semibold text-white">Activación rápida</p>
-      </div>
-      <div class="trust-badge rounded-xl p-3 text-center">
-       <i data-lucide="message-circle" class="w-5 h-5 text-green-400 mx-auto mb-1"></i>
-       <p class="text-sm font-semibold text-white">Atención directa</p>
-      </div>
-      <div class="trust-badge rounded-xl p-3 text-center">
-       <i data-lucide="calendar" class="w-5 h-5 text-blue-400 mx-auto mb-1"></i>
-       <p class="text-sm font-semibold text-white">Planes 30 días</p>
-      </div>
-      <div class="trust-badge rounded-xl p-3 text-center">
-       <i data-lucide="shield-check" class="w-5 h-5 text-purple-400 mx-auto mb-1"></i>
-       <p class="text-sm font-semibold text-white">Soporte confiable</p>
-      </div>
-     </div><!-- Preview cards -->
-     <div class="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
-      <div class="bg-gradient-to-br from-red-600/20 to-red-900/20 border border-red-500/20 rounded-2xl px-5 py-3 flex items-center gap-3">
-       <span class="text-2xl font-black text-red-400">N</span> <span class="text-sm text-gray-300 font-medium">Netflix</span>
-      </div>
-      <div class="bg-gradient-to-br from-blue-600/20 to-indigo-900/20 border border-blue-500/20 rounded-2xl px-5 py-3 flex items-center gap-3">
-       <span class="text-2xl font-black text-blue-400">D+</span> <span class="text-sm text-gray-300 font-medium">Disney+</span>
-      </div>
-      <div class="bg-gradient-to-br from-cyan-600/20 to-cyan-900/20 border border-cyan-500/20 rounded-2xl px-5 py-3 flex items-center gap-3">
-       <span class="text-2xl font-black text-cyan-400">P</span> <span class="text-sm text-gray-300 font-medium">Prime</span>
-      </div>
-      <div class="bg-gradient-to-br from-green-600/20 to-green-900/20 border border-green-500/20 rounded-2xl px-5 py-3 flex items-center gap-3">
-       <span class="text-2xl font-black text-green-400">S</span> <span class="text-sm text-gray-300 font-medium">Spotify</span>
-      </div>
-      <div class="bg-gradient-to-br from-red-500/20 to-pink-900/20 border border-red-400/20 rounded-2xl px-5 py-3 flex items-center gap-3">
-       <span class="text-2xl font-black text-red-300">YT</span> <span class="text-sm text-gray-300 font-medium">YouTube</span>
-      </div>
-      <div class="bg-gradient-to-br from-purple-600/20 to-purple-900/20 border border-purple-500/20 rounded-2xl px-5 py-3 flex items-center gap-3">
-       <span class="text-2xl font-black text-purple-400">M</span> <span class="text-sm text-gray-300 font-medium">Max</span>
-      </div>
-     </div>
-    </div>
-   </section>
-   <div class="section-glow"></div><!-- CATÁLOGO / PRECIOS -->
-   <section id="catalogo" class="py-20 px-4 bg-[#0a0a1a] relative">
-    <div class="max-w-6xl mx-auto">
-     <div class="text-center mb-14 reveal">
-      <span class="text-purple-400 font-mono text-sm tracking-widest uppercase mb-3 block">Catálogo</span>
-      <h2 id="catalog-title" class="text-3xl md:text-5xl font-800 mb-4">Nuestro Catálogo</h2>
-      <p class="text-gray-400 max-w-xl mx-auto">Elige tu plataforma favorita y disfruta 30 días de entretenimiento premium</p>
-     </div>
-     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" id="services-grid">
-      <!-- Services rendered by JS -->
-     </div>
-    </div>
-   </section>
-   <div class="section-glow"></div><!-- BENEFICIOS -->
-   <section id="beneficios" class="py-20 px-4 relative" style="background: linear-gradient(180deg, #0a0a1a 0%, #0f0a20 50%, #0a0a1a 100%);">
-    <div class="max-w-6xl mx-auto">
-     <div class="text-center mb-14 reveal">
-      <span class="text-blue-400 font-mono text-sm tracking-widest uppercase mb-3 block">Ventajas</span>
-      <h2 id="benefits-title" class="text-3xl md:text-5xl font-800 mb-4">¿Por qué elegirnos?</h2>
-      <p class="text-gray-400 max-w-xl mx-auto">Servicio confiable, rápido y accesible para todos</p>
-     </div>
-     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="benefits-grid"></div>
-    </div>
-   </section>
-   <div class="section-glow"></div><!-- CÓMO COMPRAR -->
-   <section id="como-comprar" class="py-20 px-4 bg-[#0a0a1a]">
-    <div class="max-w-4xl mx-auto">
-     <div class="text-center mb-14 reveal">
-      <span class="text-yellow-400 font-mono text-sm tracking-widest uppercase mb-3 block">Proceso</span>
-      <h2 class="text-3xl md:text-5xl font-800 mb-4">¿Cómo comprar?</h2>
-      <p class="text-gray-400 max-w-xl mx-auto">En solo 4 pasos simples tendrás tu pantalla activa</p>
-     </div>
-     <div class="space-y-6" id="steps-grid"></div>
-     <div class="text-center mt-12 reveal">
-      <a href="https://api.whatsapp.com/send/?phone=573154712844&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener noreferrer" class="wa-btn inline-flex items-center gap-3 text-white font-bold px-8 py-4 rounded-full text-lg">
-       <svg class="w-6 h-6" viewbox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-       </svg> Comprar por WhatsApp </a>
-     </div>
-    </div>
-   </section>
-   <div class="section-glow"></div><!-- MEDIOS DE PAGO -->
-   <section id="pagos" class="py-20 px-4 relative" style="background: linear-gradient(180deg, #0a0a1a 0%, #0a1020 50%, #0a0a1a 100%);">
-    <div class="max-w-5xl mx-auto">
-     <div class="text-center mb-14 reveal">
-      <span class="text-green-400 font-mono text-sm tracking-widest uppercase mb-3 block">Pagos</span>
-      <h2 class="text-3xl md:text-5xl font-800 mb-4">Medios de pago</h2>
-      <p class="text-gray-400 max-w-xl mx-auto">Aceptamos múltiples métodos para tu comodidad</p>
-     </div>
-     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-10" id="payment-grid"></div>
-     <div class="text-center reveal">
-      <p class="text-gray-400 mb-6">Consulta nuestros medios de pago disponibles por WhatsApp</p><a href="https://api.whatsapp.com/send/?phone=573154712844&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener noreferrer" class="wa-btn inline-flex items-center gap-3 text-white font-semibold px-6 py-3 rounded-full">
-       <svg class="w-5 h-5" viewbox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-       </svg> Ver medios de pago por WhatsApp </a>
-     </div>
-    </div>
-   </section>
-   <div class="section-glow"></div><!-- TESTIMONIOS -->
-   <section id="testimonios" class="py-20 px-4 bg-[#0a0a1a]">
-    <div class="max-w-5xl mx-auto">
-     <div class="text-center mb-14 reveal">
-      <span class="text-yellow-400 font-mono text-sm tracking-widest uppercase mb-3 block">Opiniones</span>
-      <h2 class="text-3xl md:text-5xl font-800 mb-4">Lo que dicen nuestros clientes</h2>
-      <div class="flex items-center justify-center gap-2 mt-4">
-       <div class="flex gap-1">
-        <span class="star text-2xl">★</span><span class="star text-2xl">★</span><span class="star text-2xl">★</span><span class="star text-2xl">★</span><span class="star text-2xl">★</span>
-       </div><span class="text-2xl font-bold text-white">4.9</span> <span class="text-gray-400 text-sm">/ 5.0</span>
-      </div>
-     </div>
-     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" id="testimonials-grid"></div>
-    </div>
-   </section>
-   <div class="section-glow"></div><!-- CONTACTO -->
-   <section id="contacto" class="py-20 px-4 relative" style="background: linear-gradient(180deg, #0a0a1a 0%, #1a0a2e 50%, #0a0a1a 100%);">
-    <div class="max-w-3xl mx-auto text-center">
-     <div class="reveal">
-      <div class="w-20 h-20 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center mx-auto mb-8 glow-yellow">
-       <svg class="w-10 h-10 text-white" viewbox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-       </svg>
-      </div>
-      <h2 id="contact-cta" class="text-3xl md:text-5xl font-800 mb-4">Haz tu pedido ahora mismo</h2>
-      <p class="text-gray-400 text-lg mb-3">Escríbenos directamente y recibe tu pantalla en minutos</p>
-      <p class="text-gray-500 font-mono text-lg mb-8">WhatsApp: <span class="text-white font-bold">315 471 2844</span></p><a href="https://api.whatsapp.com/send/?phone=573154712844&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener noreferrer" class="wa-btn inline-flex items-center gap-3 text-white font-bold px-10 py-5 rounded-full text-xl shadow-2xl">
-       <svg class="w-7 h-7" viewbox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-       </svg> Comprar por WhatsApp </a>
-     </div>
-    </div>
-   </section><!-- FOOTER -->
-   <footer class="py-8 px-4 border-t border-white/5 bg-[#050510]">
-    <div class="max-w-6xl mx-auto text-center">
-     <div class="flex items-center justify-center gap-2 mb-3">
-      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-500 via-blue-500 to-cyan-500 flex items-center justify-center">
-       <i data-lucide="play" class="w-5 h-5 text-white"></i>
-      </div><span id="footer-brand" class="font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text text-transparent">StreamPlay</span>
-     </div>
-     <p class="text-gray-600 text-sm">© 2025 StreamPlay. Entretenimiento digital premium.</p>
-    </div>
-   </footer><!-- Floating WhatsApp Button --> <a href="https://api.whatsapp.com/send/?phone=573154712844&amp;text&amp;type=phone_number&amp;app_absent=0" target="_blank" rel="noopener noreferrer" class="wa-float" aria-label="Contactar por WhatsApp">
-    <svg class="w-7 h-7 text-white" viewbox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
-    </svg></a>
-  </div>
-  <script>
-  // ========== DATA ==========
-  const services = [
-    { name: 'Netflix', price: '$15.000', color: 'from-red-600 to-red-800', border: 'border-red-500/20', emoji: '🎬', letterColor: 'text-red-400', iconBg: 'bg-red-500/20' },
-    { name: 'Disney+', price: '$12.000', color: 'from-blue-600 to-indigo-800', border: 'border-blue-500/20', emoji: '✨', letterColor: 'text-blue-400', iconBg: 'bg-blue-500/20' },
-    { name: 'Prime Video', price: '$7.000', color: 'from-cyan-600 to-cyan-800', border: 'border-cyan-500/20', emoji: '▶️', letterColor: 'text-cyan-400', iconBg: 'bg-cyan-500/20' },
-    { name: 'Vix', price: '$7.000', color: 'from-orange-500 to-amber-700', border: 'border-orange-500/20', emoji: '📺', letterColor: 'text-orange-400', iconBg: 'bg-orange-500/20' },
-    { name: 'Crunchyroll', price: '$7.000', color: 'from-orange-600 to-red-700', border: 'border-orange-400/20', emoji: '🎨', letterColor: 'text-orange-300', iconBg: 'bg-orange-500/20' },
-    { name: 'Max', price: '$7.000', color: 'from-purple-600 to-purple-900', border: 'border-purple-500/20', emoji: '🎭', letterColor: 'text-purple-400', iconBg: 'bg-purple-500/20' },
-    { name: 'Spotify Premium', price: '$12.000', color: 'from-green-600 to-green-800', border: 'border-green-500/20', emoji: '🎵', letterColor: 'text-green-400', iconBg: 'bg-green-500/20' },
-    { name: 'YouTube Premium', price: '$12.000', color: 'from-red-500 to-pink-700', border: 'border-red-400/20', emoji: '▶️📺', letterColor: 'text-red-300', iconBg: 'bg-red-500/20' }
-  ];
+  </header>
 
-  const benefits = [
-    { icon: 'dollar-sign', title: 'Precios accesibles', desc: 'Las mejores tarifas del mercado para tu entretenimiento', color: 'text-green-400' },
-    { icon: 'zap', title: 'Activación rápida', desc: 'Recibe tu acceso en minutos después del pago', color: 'text-yellow-400' },
-    { icon: 'message-circle', title: 'Atención por WhatsApp', desc: 'Comunicación directa, rápida y personalizada', color: 'text-green-400' },
-    { icon: 'calendar', title: 'Servicio por 30 días', desc: 'Planes mensuales sin compromisos a largo plazo', color: 'text-blue-400' },
-    { icon: 'check-circle', title: 'Compra sencilla', desc: 'Proceso fácil en pocos pasos desde tu celular', color: 'text-purple-400' },
-    { icon: 'layers', title: 'Variedad de opciones', desc: 'Las plataformas más populares en un solo lugar', color: 'text-cyan-400' }
-  ];
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1>Todo tu <span class="highlight">entretenimiento</span> en un solo lugar</h1>
+          <p>
+            Pantallas por 30 días con activación rápida, atención directa por WhatsApp
+            y precios accesibles. Compra fácil, paga seguro y recibe tu acceso en poco tiempo.
+          </p>
 
-  const steps = [
-    { num: '1', title: 'Elige tu pantalla', desc: 'Selecciona la plataforma que deseas disfrutar de nuestro catálogo' },
-    { num: '2', title: 'Escríbenos por WhatsApp', desc: 'Envía un mensaje indicando qué servicio quieres activar' },
-    { num: '3', title: 'Realiza el pago', desc: 'Paga de forma segura por Nequi, Daviplata u otros medios' },
-    { num: '4', title: 'Recibe activación y acceso', desc: 'Te enviamos los datos de acceso en minutos' }
-  ];
-
-  const payments = [
-    { name: 'Nequi', emoji: '💜', bg: 'from-purple-500/15 to-purple-800/15' },
-    { name: 'Daviplata', emoji: '❤️', bg: 'from-red-500/15 to-red-800/15' },
-    { name: 'Bancolombia', emoji: '💛', bg: 'from-yellow-500/15 to-yellow-800/15' },
-    { name: 'Transferencia', emoji: '🏦', bg: 'from-blue-500/15 to-blue-800/15' },
-    { name: 'QR', emoji: '📱', bg: 'from-cyan-500/15 to-cyan-800/15' },
-    { name: 'Otros medios', emoji: '💳', bg: 'from-gray-500/15 to-gray-800/15' }
-  ];
-
-  const testimonials = [
-    { name: 'Carlos M.', text: 'Rápida atención y activación. Excelente servicio, totalmente recomendado.', stars: 5 },
-    { name: 'Laura G.', text: 'Muy recomendado, todo excelente. Llevó Netflix y Disney+ sin problema.', stars: 5 },
-    { name: 'Andrés R.', text: 'Buen precio y servicio confiable. Ya llevo 3 meses comprando aquí.', stars: 5 },
-    { name: 'María P.', text: 'Compré fácil y me respondieron rápido. La mejor opción para streaming.', stars: 5 }
-  ];
-
-  // ========== RENDER ==========
-  function renderServices() {
-    const grid = document.getElementById('services-grid');
-    grid.innerHTML = services.map((s, i) => `
-      <div class="service-card rounded-2xl p-5 flex flex-col reveal" style="animation-delay: ${i * 80}ms">
-        <div class="flex items-center gap-3 mb-4 relative z-10">
-          <div class="service-icon ${s.iconBg} bg-gradient-to-br ${s.color}">
-            <span class="text-2xl">${s.emoji}</span>
+          <div class="hero-badges">
+            <div class="badge">⚡ Activación rápida</div>
+            <div class="badge">📲 Atención personalizada</div>
+            <div class="badge">🗓️ Planes por 30 días</div>
+            <div class="badge">💳 Varios medios de pago</div>
           </div>
-          <div>
-            <h3 class="font-bold text-white text-lg">${s.name}</h3>
-            <p class="text-gray-500 text-xs">Por pantalla</p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20una%20pantalla" target="_blank">Comprar por WhatsApp</a>
+            <a class="btn btn-secondary" href="#catalogo">Ver precios</a>
           </div>
         </div>
-        <div class="price-tag rounded-xl px-4 py-3 mb-4 text-center relative z-10">
-          <span class="text-2xl font-900 text-yellow-400">${s.price}</span>
-          <span class="text-gray-400 text-sm block">COP / 30 días</span>
-        </div>
-        <p class="text-gray-500 text-xs mb-4 flex items-center gap-1 relative z-10">
-          <i data-lucide="clock" class="w-3 h-3"></i> Vigencia: 30 días
-        </p>
-        <a href="https://api.whatsapp.com/send/?phone=573154712844&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" class="wa-btn mt-auto text-white font-semibold py-3 rounded-xl text-center text-sm flex items-center justify-center gap-2 relative z-10">
-          <i data-lucide="shopping-cart" class="w-4 h-4"></i>
-          Comprar ahora
-        </a>
-      </div>
-    `).join('');
-  }
 
-  function renderBenefits() {
-    const grid = document.getElementById('benefits-grid');
-    grid.innerHTML = benefits.map((b, i) => `
-      <div class="benefit-card rounded-2xl p-6 reveal" style="animation-delay: ${i * 80}ms">
-        <i data-lucide="${b.icon}" class="w-8 h-8 ${b.color} mb-4"></i>
-        <h3 class="font-bold text-white text-lg mb-2">${b.title}</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">${b.desc}</p>
-      </div>
-    `).join('');
-  }
-
-  function renderSteps() {
-    const grid = document.getElementById('steps-grid');
-    grid.innerHTML = steps.map((s, i) => `
-      <div class="flex items-start gap-5 reveal" style="animation-delay: ${i * 100}ms">
-        <div class="step-circle">${s.num}</div>
-        <div class="pt-1">
-          <h3 class="font-bold text-white text-lg mb-1">${s.title}</h3>
-          <p class="text-gray-400 text-sm">${s.desc}</p>
+        <div class="preview-panel">
+          <div class="preview-title">Vista previa de servicios</div>
+          <div class="mini-grid">
+            <div class="mini-card">
+              <span>Netflix</span>
+              <small>$15.000 / 30 días</small>
+            </div>
+            <div class="mini-card">
+              <span>Disney+</span>
+              <small>$12.000 / 30 días</small>
+            </div>
+            <div class="mini-card">
+              <span>Prime Video</span>
+              <small>$7.000 / 30 días</small>
+            </div>
+            <div class="mini-card">
+              <span>Max</span>
+              <small>$7.000 / 30 días</small>
+            </div>
+            <div class="mini-card">
+              <span>Crunchyroll</span>
+              <small>$7.000 / 30 días</small>
+            </div>
+            <div class="mini-card">
+              <span>Spotify Premium</span>
+              <small>$12.000 / 30 días</small>
+            </div>
+          </div>
         </div>
       </div>
-    `).join('');
-  }
+    </section>
 
-  function renderPayments() {
-    const grid = document.getElementById('payment-grid');
-    grid.innerHTML = payments.map((p, i) => `
-      <div class="payment-card rounded-xl p-5 text-center reveal" style="animation-delay: ${i * 60}ms">
-        <span class="text-3xl block mb-2">${p.emoji}</span>
-        <span class="text-sm font-semibold text-gray-300">${p.name}</span>
-      </div>
-    `).join('');
-  }
-
-  function renderTestimonials() {
-    const grid = document.getElementById('testimonials-grid');
-    grid.innerHTML = testimonials.map((t, i) => `
-      <div class="testimonial-card rounded-2xl p-5 reveal" style="animation-delay: ${i * 80}ms">
-        <div class="flex gap-0.5 mb-3">
-          ${'<span class="star">★</span>'.repeat(t.stars)}
+    <section id="catalogo">
+      <div class="container">
+        <div class="section-head">
+          <h2>Catálogo y precios</h2>
+          <p>Elige tu pantalla favorita. Todas las opciones tienen vigencia de 30 días.</p>
         </div>
-        <p class="text-gray-300 text-sm mb-4 leading-relaxed">"${t.text}"</p>
-        <div class="flex items-center gap-2">
-          <div class="w-8 h-8 rounded-full bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center text-xs font-bold text-white">${t.name.charAt(0)}</div>
-          <span class="text-gray-400 text-sm font-medium">${t.name}</span>
+
+        <div class="catalog">
+          <div class="card service">
+            <div class="service-name">Netflix</div>
+            <div class="service-price">$15.000</div>
+            <div class="service-time">Vigencia: 30 días</div>
+            <div class="service-preview">Vista previa</div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Netflix%20por%2030%20días" target="_blank">Comprar ahora</a>
+          </div>
+
+          <div class="card service">
+            <div class="service-name">Disney+</div>
+            <div class="service-price">$12.000</div>
+            <div class="service-time">Vigencia: 30 días</div>
+            <div class="service-preview">Vista previa</div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Disney+%20por%2030%20días" target="_blank">Comprar ahora</a>
+          </div>
+
+          <div class="card service">
+            <div class="service-name">Prime Video</div>
+            <div class="service-price">$7.000</div>
+            <div class="service-time">Vigencia: 30 días</div>
+            <div class="service-preview">Vista previa</div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Prime%20Video%20por%2030%20días" target="_blank">Comprar ahora</a>
+          </div>
+
+          <div class="card service">
+            <div class="service-name">Vix</div>
+            <div class="service-price">$7.000</div>
+            <div class="service-time">Vigencia: 30 días</div>
+            <div class="service-preview">Vista previa</div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Vix%20por%2030%20días" target="_blank">Comprar ahora</a>
+          </div>
+
+          <div class="card service">
+            <div class="service-name">Crunchyroll</div>
+            <div class="service-price">$7.000</div>
+            <div class="service-time">Vigencia: 30 días</div>
+            <div class="service-preview">Vista previa</div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Crunchyroll%20por%2030%20días" target="_blank">Comprar ahora</a>
+          </div>
+
+          <div class="card service">
+            <div class="service-name">Max</div>
+            <div class="service-price">$7.000</div>
+            <div class="service-time">Vigencia: 30 días</div>
+            <div class="service-preview">Vista previa</div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Max%20por%2030%20días" target="_blank">Comprar ahora</a>
+          </div>
+
+          <div class="card service">
+            <div class="service-name">Spotify Premium</div>
+            <div class="service-price">$12.000</div>
+            <div class="service-time">Vigencia: 30 días</div>
+            <div class="service-preview">Vista previa</div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Spotify%20Premium%20por%2030%20días" target="_blank">Comprar ahora</a>
+          </div>
+
+          <div class="card service">
+            <div class="service-name">YouTube Premium</div>
+            <div class="service-price">$12.000</div>
+            <div class="service-time">Vigencia: 30 días</div>
+            <div class="service-preview">Vista previa</div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20YouTube%20Premium%20por%2030%20días" target="_blank">Comprar ahora</a>
+          </div>
         </div>
       </div>
-    `).join('');
-  }
+    </section>
 
-  // ========== SCROLL REVEAL ==========
-  function initScrollReveal() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    <section id="beneficios">
+      <div class="container">
+        <div class="section-head">
+          <h2>¿Por qué elegirnos?</h2>
+          <p>Una experiencia simple, rápida y orientada a que compres sin complicaciones.</p>
+        </div>
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  }
+        <div class="grid-3">
+          <div class="feature-box">
+            <h3>⚡ Activación rápida</h3>
+            <p>Te atendemos por WhatsApp y agilizamos tu pedido para que tengas acceso cuanto antes.</p>
+          </div>
+          <div class="feature-box">
+            <h3>💰 Precios accesibles</h3>
+            <p>Opciones para distintos presupuestos, todas con duración de 30 días.</p>
+          </div>
+          <div class="feature-box">
+            <h3>📲 Atención directa</h3>
+            <p>Contacto claro, rápido y sin formularios complicados. Todo desde tu celular.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  // ========== ELEMENT SDK ==========
-  const defaultConfig = {
-    hero_title: 'Todo tu entretenimiento en un solo lugar',
-    hero_subtitle: 'Pantallas por 30 días con activación rápida, atención personalizada y precios accesibles',
-    brand_name: 'StreamPlay',
-    catalog_title: 'Nuestro Catálogo',
-    benefits_title: '¿Por qué elegirnos?',
-    contact_cta: 'Haz tu pedido ahora mismo',
-    background_color: '#0a0a1a',
-    surface_color: '#151525',
-    text_color: '#e2e8f0',
-    primary_action_color: '#6332ff',
-    secondary_action_color: '#25D366',
-    font_family: 'Outfit',
-    font_size: 16
-  };
+    <section id="como-comprar">
+      <div class="container">
+        <div class="section-head">
+          <h2>Cómo comprar</h2>
+          <p>Haz tu pedido en pocos pasos.</p>
+        </div>
 
-  function applyConfig(config) {
-    const c = { ...defaultConfig, ...config };
-    const font = c.font_family || defaultConfig.font_family;
-    const baseFontStack = 'Outfit, sans-serif';
-    const fontStack = `${font}, ${baseFontStack}`;
-    const baseSize = c.font_size || defaultConfig.font_size;
+        <div class="steps">
+          <div class="step">
+            <div class="step-number">1</div>
+            <h3>Elige tu pantalla</h3>
+            <p>Revisa el catálogo y selecciona la opción que deseas comprar.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">2</div>
+            <h3>Escríbenos por WhatsApp</h3>
+            <p>Presiona cualquier botón de compra y llegarás directo a nuestro chat.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">3</div>
+            <h3>Realiza el pago</h3>
+            <p>Te compartimos los medios disponibles para completar tu pedido.</p>
+          </div>
+          <div class="step">
+            <div class="step-number">4</div>
+            <h3>Recibe tu acceso</h3>
+            <p>Confirmamos tu compra y continuamos con la entrega correspondiente.</p>
+          </div>
+        </div>
 
-    // Text content
-    const heroTitle = document.getElementById('hero-title');
-    if (heroTitle) {
-      const t = c.hero_title || defaultConfig.hero_title;
-      // Keep the gradient span effect
-      const words = t.split(' ');
-      if (words.length > 2) {
-        heroTitle.innerHTML = words.slice(0, 2).join(' ') + ' <span class="bg-gradient-to-r from-purple-400 via-blue-400 to-yellow-400 bg-clip-text text-transparent">' + words.slice(2).join(' ') + '</span>';
-      } else {
-        heroTitle.textContent = t;
-      }
-    }
+        <div style="text-align:center;">
+          <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20hacer%20mi%20pedido" target="_blank">Pedir por WhatsApp</a>
+        </div>
+      </div>
+    </section>
 
-    const heroSub = document.getElementById('hero-subtitle');
-    if (heroSub) heroSub.textContent = c.hero_subtitle || defaultConfig.hero_subtitle;
+    <section id="pagos">
+      <div class="container">
+        <div class="section-head">
+          <h2>Medios de pago</h2>
+          <p>Sección organizada para mostrar tus métodos disponibles. Puedes editar estos datos fácilmente.</p>
+        </div>
 
-    const catTitle = document.getElementById('catalog-title');
-    if (catTitle) catTitle.textContent = c.catalog_title || defaultConfig.catalog_title;
+        <div class="payments-grid">
+          <div class="payment-box">
+            <h3>Nequi</h3>
+            <p>Agrega aquí tu número o instrucciones de pago por Nequi.</p>
+            <span class="payment-tag">Editable</span>
+          </div>
+          <div class="payment-box">
+            <h3>Daviplata</h3>
+            <p>Agrega aquí tu número o instrucciones de pago por Daviplata.</p>
+            <span class="payment-tag">Editable</span>
+          </div>
+          <div class="payment-box">
+            <h3>Bancolombia</h3>
+            <p>Agrega aquí tu cuenta o método de transferencia.</p>
+            <span class="payment-tag">Editable</span>
+          </div>
+          <div class="payment-box">
+            <h3>Transferencia</h3>
+            <p>Usa este espacio para datos bancarios adicionales.</p>
+            <span class="payment-tag">Editable</span>
+          </div>
+          <div class="payment-box">
+            <h3>QR</h3>
+            <p>Puedes reemplazar este texto por una imagen QR más adelante.</p>
+            <span class="payment-tag">Editable</span>
+          </div>
+          <div class="payment-box">
+            <h3>Otros medios</h3>
+            <p>Consulta disponibilidad y detalles directamente por WhatsApp.</p>
+            <span class="payment-tag">Soporte directo</span>
+          </div>
+        </div>
 
-    const benTitle = document.getElementById('benefits-title');
-    if (benTitle) benTitle.textContent = c.benefits_title || defaultConfig.benefits_title;
+        <p class="note">Consulta nuestros medios de pago disponibles por WhatsApp.</p>
+        <div style="text-align:center; margin-top:18px;">
+          <a class="btn btn-secondary" href="https://wa.me/573154712844?text=Hola,%20quiero%20ver%20los%20medios%20de%20pago" target="_blank">Ver medios de pago por WhatsApp</a>
+        </div>
+      </div>
+    </section>
 
-    const contactCta = document.getElementById('contact-cta');
-    if (contactCta) contactCta.textContent = c.contact_cta || defaultConfig.contact_cta;
+    <section id="calificaciones">
+      <div class="container">
+        <div class="section-head">
+          <h2>Calificaciones y reseñas</h2>
+          <p>Una sección pensada para generar confianza con prueba social.</p>
+        </div>
 
-    const navBrand = document.getElementById('nav-brand');
-    if (navBrand) navBrand.textContent = c.brand_name || defaultConfig.brand_name;
+        <div class="reviews-grid">
+          <div class="review-card">
+            <div class="rating">★★★★★</div>
+            <h3>Ana M.</h3>
+            <p>Rápida atención y activación. Muy recomendado.</p>
+          </div>
+          <div class="review-card">
+            <div class="rating">★★★★★</div>
+            <h3>Carlos R.</h3>
+            <p>Buen precio y proceso fácil. Me respondieron rápido.</p>
+          </div>
+          <div class="review-card">
+            <div class="rating">★★★★★</div>
+            <h3>Laura P.</h3>
+            <p>Todo excelente, la compra fue clara y sencilla.</p>
+          </div>
+        </div>
 
-    const footerBrand = document.getElementById('footer-brand');
-    if (footerBrand) footerBrand.textContent = c.brand_name || defaultConfig.brand_name;
+        <p class="note">Calificación visual sugerida: <strong style="color:#ffd54a;">4.9/5</strong></p>
+      </div>
+    </section>
 
-    // Colors
-    document.body.style.backgroundColor = c.background_color;
-    document.body.style.color = c.text_color;
+    <section id="faq">
+      <div class="container">
+        <div class="section-head">
+          <h2>Preguntas frecuentes</h2>
+          <p>Respuestas rápidas para resolver dudas antes de comprar.</p>
+        </div>
 
-    // Font
-    document.body.style.fontFamily = fontStack;
-    if (heroTitle) heroTitle.style.fontFamily = fontStack;
-    if (heroTitle) heroTitle.style.fontSize = `${baseSize * 2.8}px`;
-    if (heroSub) heroSub.style.fontSize = `${baseSize * 1.15}px`;
-    if (catTitle) { catTitle.style.fontFamily = fontStack; catTitle.style.fontSize = `${baseSize * 2.4}px`; }
-    if (benTitle) { benTitle.style.fontFamily = fontStack; benTitle.style.fontSize = `${baseSize * 2.4}px`; }
-    if (contactCta) { contactCta.style.fontFamily = fontStack; contactCta.style.fontSize = `${baseSize * 2.4}px`; }
-  }
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h3>¿Cuánto dura cada pantalla?</h3>
+            <p>Todas las opciones publicadas en esta página tienen una vigencia de 30 días.</p>
+          </div>
+          <div class="faq-item">
+            <h3>¿Cómo hago el pago?</h3>
+            <p>Puedes consultar los medios disponibles en la sección de pagos o escribirnos por WhatsApp.</p>
+          </div>
+          <div class="faq-item">
+            <h3>¿Cómo recibo el acceso?</h3>
+            <p>Después de confirmar tu pedido y pago, seguimos el proceso de entrega por WhatsApp.</p>
+          </div>
+          <div class="faq-item">
+            <h3>¿La atención es por WhatsApp?</h3>
+            <p>Sí, toda la atención y gestión del pedido se realiza directamente por WhatsApp.</p>
+          </div>
+          <div class="faq-item">
+            <h3>¿Puedo pedir más de una pantalla?</h3>
+            <p>Sí, puedes solicitar varias opciones. Escríbenos y te ayudamos con tu pedido.</p>
+          </div>
+          <div class="faq-item">
+            <h3>¿Puedo consultar antes de comprar?</h3>
+            <p>Sí. Puedes escribirnos sin compromiso para resolver dudas sobre precios o medios de pago.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  if (window.elementSdk) {
-    window.elementSdk.init({
-      defaultConfig,
-      onConfigChange: async (config) => { applyConfig(config); },
-      mapToCapabilities: (config) => ({
-        recolorables: [
-          { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
-          { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
-          { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
-          { get: () => config.primary_action_color || defaultConfig.primary_action_color, set: (v) => { config.primary_action_color = v; window.elementSdk.setConfig({ primary_action_color: v }); } },
-          { get: () => config.secondary_action_color || defaultConfig.secondary_action_color, set: (v) => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); } }
-        ],
-        borderables: [],
-        fontEditable: {
-          get: () => config.font_family || defaultConfig.font_family,
-          set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
-        },
-        fontSizeable: {
-          get: () => config.font_size || defaultConfig.font_size,
-          set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
-        }
-      }),
-      mapToEditPanelValues: (config) => new Map([
-        ['hero_title', config.hero_title || defaultConfig.hero_title],
-        ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
-        ['brand_name', config.brand_name || defaultConfig.brand_name],
-        ['catalog_title', config.catalog_title || defaultConfig.catalog_title],
-        ['benefits_title', config.benefits_title || defaultConfig.benefits_title],
-        ['contact_cta', config.contact_cta || defaultConfig.contact_cta]
-      ])
-    });
-  }
+    <section id="contacto">
+      <div class="container">
+        <div class="contact-box">
+          <h2>Haz tu pedido ahora mismo</h2>
+          <p>Estamos listos para atenderte por WhatsApp.</p>
+          <div class="contact-number">3154712844</div>
+          <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20hacer%20mi%20pedido%20ahora" target="_blank">Contactar por WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  // ========== INIT ==========
-  renderServices();
-  renderBenefits();
-  renderSteps();
-  renderPayments();
-  renderTestimonials();
-  lucide.createIcons();
-  // Re-create icons after dynamic content
-  setTimeout(() => { lucide.createIcons(); initScrollReveal(); }, 100);
-</script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9e00dfafa722a575',t:'MTc3NDEzNzE4Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+  <footer>
+    <div class="container footer-box">
+      <div>
+        <strong style="color: var(--text);">StreamPlus</strong><br>
+        Atención por WhatsApp · Planes por 30 días
+      </div>
+      <div class="footer-links">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#pagos">Pagos</a>
+        <a href="#calificaciones">Calificaciones</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+  <a
+    class="whatsapp-float"
+    href="https://wa.me/573154712844?text=Hola,%20quiero%20información"
+    target="_blank"
+    aria-label="WhatsApp"
+    title="WhatsApp"
+  >💬</a>
+</body>
 </html>
