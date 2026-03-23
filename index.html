@@ -603,6 +603,23 @@ section:nth-of-type(8) { animation-delay: 0.56s; }
       box-shadow: 0 14px 28px rgba(0,0,0,0.35);
     }
 
+    .payment-logo {
+  width: 100%;
+  height: 90px;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  background: rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
     .note {
       margin-top: 14px;
       color: var(--muted);
@@ -921,48 +938,86 @@ section:nth-of-type(8) { animation-delay: 0.56s; }
       </div>
     </section>
 
-    <section id="pagos">
-      <div class="container">
-        <div class="section-head">
-          <h2>Medios de pago</h2>
-          <p>Escribennos en caso de no encontrar el que necesites</p>
-        </div>
+<section id="pagos">
+  <div class="container">
+    <div class="section-head">
+      <h2>Medios de pago</h2>
+      <p>Elige el método más cómodo para ti. Atención rápida y confirmación inmediata.</p>
+    </div>
 
-        <div class="payments-grid">
-          <div class="payment-box">
-            <h3>Nequi</h3>
-            <p>3154712844</p>
-            <span class="payment-tag">Editable</span>
-          </div>
-          <div class="payment-box">
-            <h3>Daviplata</h3>
-            <p>3154712844.</p>
-            <span class="payment-tag">Editable</span>
-          </div>
-          <div class="payment-box">
-            <h3>Bancolombia</h3>
-            <p>Escribennos para hacer la activación</p>
-            <span class="payment-tag">Editable</span>
-          </div>
-          <div class="payment-box">
-            <h3>Llaves</h3>
-            <p> @3154712844 </p>
-            <span class="payment-tag">Editable</span>
-          </div>
-          <div class="payment-box">
-            <h3>NU</h3>
-            <p>Solicita nuestro numero Nu al whatsapp</p>
-            <span class="payment-tag">Editable</span>
-          </div>
-          <div class="payment-box">
-            <h3>Otros medios</h3>
-            <p>Consulta disponibilidad y detalles directamente por WhatsApp.</p>
-            <span class="payment-tag">Soporte directo</span>
-          </div>
+    <div class="payments-grid">
+
+      <!-- NEQUI -->
+      <div class="payment-box">
+        <div class="payment-logo">
+          <img src="neki.png" alt="Nequi">
         </div>
+        <h3>Nequi</h3>
+        <p># 3154712844 - Juan Campana</p>
+        <span class="payment-tag">Pago inmediato</span>
       </div>
-    </section>
 
+      <!-- DAVIPLATA -->
+      <div class="payment-box">
+        <div class="payment-logo">
+          <img src="davi.png" alt="Daviplata">
+        </div>
+        <h3>Daviplata</h3>
+        <p># 3154712844</p>
+        <span class="payment-tag">Transferencia rápida</span>
+      </div>
+
+      <!-- LLAVE / BRE-B -->
+      <div class="payment-box">
+        <div class="payment-logo">
+          <img src="bre.png" alt="Llave">
+        </div>
+        <h3>Llave</h3>
+        <p>@3154712844</p>
+        <span class="payment-tag">Pago digital</span>
+      </div>
+
+      <!-- QR -->
+      <div class="payment-box">
+        <div class="payment-logo">
+          <img src="qr.png" alt="QR">
+        </div>
+        <h3>Pago con QR</h3>
+        <p>Escanea el código para pagar fácilmente</p>
+        <span class="payment-tag">Escanea y paga</span>
+      </div>
+
+      <!-- NU -->
+      <div class="payment-box">
+        <div class="payment-logo">
+          <img src="nu.png" alt="Nu">
+        </div>
+        <h3>Nu</h3>
+        <p>Consulta disponibilidad por WhatsApp</p>
+        <span class="payment-tag">Soporte directo</span>
+      </div>
+
+      <!-- OTROS -->
+      <div class="payment-box">
+        <div class="payment-logo">
+          <div style="font-size: 2rem;">💳</div>
+        </div>
+        <h3>Otros medios</h3>
+        <p>Consulta por WhatsApp para más opciones disponibles.</p>
+        <span class="payment-tag">Atención directa</span>
+      </div>
+
+    </div>
+
+    <p class="note">Si tienes dudas sobre los pagos, escríbenos por WhatsApp.</p>
+
+    <div style="text-align:center; margin-top:18px;">
+      <a class="btn btn-secondary" href="https://wa.me/573154712844?text=Hola,%20quiero%20ver%20los%20medios%20de%20pago" target="_blank">
+        Consultar medios de pago
+      </a>
+    </div>
+  </div>
+</section>
     <section id="calificaciones">
       <div class="container">
         <div class="section-head">
