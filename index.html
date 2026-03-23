@@ -424,17 +424,17 @@ section:nth-of-type(8) { animation-delay: 0.56s; }
 }
 
     .service-name {
-      font-size: 1.15rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
 
-    .service-price {
-      font-size: 1.7rem;
-      font-weight: 900;
-      color: var(--yellow);
-      margin-bottom: 6px;
-    }
+.service-price {
+  font-size: 1.95rem;
+  font-weight: 900;
+  color: var(--yellow);
+  margin-bottom: 6px;
+}
 
     .service-time {
       color: var(--muted);
@@ -443,7 +443,7 @@ section:nth-of-type(8) { animation-delay: 0.56s; }
     }
 
     .service-preview {
-      height: 74px;
+      height: 120px;
       border-radius: 14px;
       margin-bottom: 16px;
       background:
@@ -459,6 +459,10 @@ section:nth-of-type(8) { animation-delay: 0.56s; }
       letter-spacing: 0.4px;
     }
 
+    .service.featured {
+  border: 1px solid rgba(255, 213, 74, 0.45);
+  box-shadow: 0 0 0 1px rgba(255, 213, 74, 0.15), 0 18px 36px rgba(0,0,0,0.35);
+}
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -538,6 +542,10 @@ section:nth-of-type(8) { animation-delay: 0.56s; }
       margin-bottom: 10px;
     }
 
+    .payment-box.featured {
+  border: 1px solid rgba(37, 211, 102, 0.6);
+  box-shadow: 0 0 0 1px rgba(37, 211, 102, 0.2), 0 18px 36px rgba(0,0,0,0.35);
+}
     .contact-box {
       background:
         linear-gradient(145deg, rgba(91,167,255,0.18), rgba(138,92,255,0.18)),
@@ -727,27 +735,27 @@ section:nth-of-type(8) { animation-delay: 0.56s; }
           <div class="preview-title">Vista previa de servicios</div>
           <div class="mini-grid">
             <div class="mini-card">
-              <span>Netflix</span>
+              <span style="color:#e50914;">Netflix</span>
               <small>$15.000 / 30 días</small>
             </div>
             <div class="mini-card">
-              <span>Disney+</span>
+              <span style="color:#00A8E1;">Disney+</span>
               <small>$12.000 / 30 días</small>
             </div>
             <div class="mini-card">
-              <span>Prime Video</span>
+              <span style="color:#0F79AF;">Prime Video</span>
               <small>$7.000 / 30 días</small>
             </div>
             <div class="mini-card">
-              <span>Max</span>
+              <span style="color:#ffffff;">Max</span>
               <small>$7.000 / 30 días</small>
             </div>
             <div class="mini-card">
-              <span>Crunchyroll</span>
+              <span style="color:#f47521;">Crunchyroll</span>
               <small>$7.000 / 30 días</small>
             </div>
             <div class="mini-card">
-              <span>Spotify Premium</span>
+              <span style="color:#1DB954;">Spotify Premium</span>
               <small>$12.000 / 30 días</small>
             </div>
           </div>
@@ -763,7 +771,7 @@ section:nth-of-type(8) { animation-delay: 0.56s; }
         </div>
 
         <div class="catalog">
-         <div class="card service">
+         <div class="card service featured">
           <div class="service-name">Netflix</div>
           <div class="service-price">$15.000</div>
           <div class="service-time">Vigencia: 30 días</div>
@@ -948,7 +956,7 @@ section:nth-of-type(8) { animation-delay: 0.56s; }
     <div class="payments-grid">
 
       <!-- NEQUI -->
-      <div class="payment-box">
+      <div class="payment-box featured">
         <div class="payment-logo">
           <img src="neki.png" alt="Nequi">
         </div>
