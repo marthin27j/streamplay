@@ -267,9 +267,16 @@
     }
 
     .service {
-      position: relative;
-      overflow: hidden;
-    }
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+    .service:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 18px 38px rgba(0,0,0,0.42);
+  border-color: rgba(255,255,255,0.22);
+}
 
     .service::before {
       content: "";
@@ -280,6 +287,141 @@
         radial-gradient(circle at bottom left, rgba(138,92,255,0.14), transparent 25%);
       pointer-events: none;
     }
+    
+    .service-preview {
+  height: 74px;
+  border-radius: 14px;
+  margin-bottom: 16px;
+  background:
+    linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)),
+    linear-gradient(135deg, rgba(91,167,255,0.25), rgba(138,92,255,0.25));
+  border: 1px solid rgba(255,255,255,0.1);
+  filter: blur(0.2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffffcc;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.service-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.service:hover .service-preview img {
+  transform: scale(1.08);
+  filter: brightness(1.08);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  font-weight: 700;
+  transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.feature-box,
+.payment-box,
+.review-card,
+.faq-item,
+.step,
+.preview-panel,
+.contact-box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.feature-box:hover,
+.payment-box:hover,
+.review-card:hover,
+.faq-item:hover,
+.step:hover,
+.preview-panel:hover,
+.contact-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 36px rgba(0,0,0,0.35);
+  border-color: rgba(255,255,255,0.2);
+}
+
+.whatsapp-float {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 1000;
+  background: var(--green);
+  color: white;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 1.6rem;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.35);
+  animation: pulseWhatsapp 1.8s infinite;
+  transition: transform 0.25s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+}
+
+.hero,
+section,
+footer {
+  animation: fadeUp 0.9s ease both;
+}
+
+section:nth-of-type(2) { animation-delay: 0.08s; }
+section:nth-of-type(3) { animation-delay: 0.16s; }
+section:nth-of-type(4) { animation-delay: 0.24s; }
+section:nth-of-type(5) { animation-delay: 0.32s; }
+section:nth-of-type(6) { animation-delay: 0.40s; }
+section:nth-of-type(7) { animation-delay: 0.48s; }
+section:nth-of-type(8) { animation-delay: 0.56s; }
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseWhatsapp {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
 
     .service-name {
       font-size: 1.15rem;
@@ -610,8 +752,8 @@
           <div class="service-time">Vigencia: 30 días</div>
 
           <div class="service-preview">
-           <img src="descarga.jpg" alt="Netflix" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
-         </div>
+           <img src="descarga.jpg" alt="Netflix">
+          </div>
 
   <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Netflix%20por%2030%20días" target="_blank">
     Comprar ahora
@@ -624,7 +766,7 @@
   <div class="service-time">Vigencia: 30 días</div>
 
   <div class="service-preview">
-    <img src="disnye.jpg" alt="Disney+" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
+    <img src="disnye.jpg" alt="Disney+">
   </div>
 
   <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Disney+%20por%2030%20días" target="_blank">
@@ -638,7 +780,7 @@
   <div class="service-time">Vigencia: 30 días</div>
 
   <div class="service-preview">
-    <img src="prime.png" alt="Prime Video" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
+    <img src="prime.png" alt="Prime Video">
   </div>
 
   <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Prime%20Video%20por%2030%20días" target="_blank">
@@ -652,7 +794,7 @@
   <div class="service-time">Vigencia: 30 días</div>
 
   <div class="service-preview">
-    <img src="vix.jpg" alt="Vix" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
+    <img src="vix.jpg" alt="Vix">
   </div>
 
   <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Vix%20por%2030%20días" target="_blank">
@@ -666,7 +808,7 @@
   <div class="service-time">Vigencia: 30 días</div>
 
   <div class="service-preview">
-    <img src="crunchy.png" alt="Crunchyroll" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
+    <img src="crunchy.png" alt="Crunchyroll">
   </div>
 
   <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Crunchyroll%20por%2030%20días" target="_blank">
@@ -680,7 +822,7 @@
   <div class="service-time">Vigencia: 30 días</div>
 
   <div class="service-preview">
-    <img src="max.jpg" alt="Max" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
+    <img src="max.jpg" alt="Max">
   </div>
 
   <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Max%20por%2030%20días" target="_blank">
@@ -694,7 +836,7 @@
   <div class="service-time">Vigencia: 30 días</div>
 
   <div class="service-preview">
-    <img src="spoti.png" alt="Spotify" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
+    <img src="spoti.png" alt="Spotify">
   </div>
 
   <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Spotify%20Premium%20por%2030%20días" target="_blank">
@@ -708,7 +850,7 @@
   <div class="service-time">Vigencia: 30 días</div>
 
   <div class="service-preview">
-    <img src="yutu.png" alt="YouTube Premium" style="width:100%; height:100%; object-fit:cover; border-radius:12px;">
+    <img src="yutu.png" alt="YouTube Premium">
   </div>
 
   <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20YouTube%20Premium%20por%2030%20días" target="_blank">
