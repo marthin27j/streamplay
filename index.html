@@ -79,13 +79,33 @@
     }
 
     .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
       font-size: 1.2rem;
       font-weight: 800;
       letter-spacing: 0.3px;
     }
 
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,0.18);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.28);
+      background: rgba(255,255,255,0.08);
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+    }
+
     .brand span {
-      color: var(--red);
+      color: var(--yellow);
     }
 
     .nav-links {
@@ -267,16 +287,16 @@
     }
 
     .service {
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-}
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+    }
 
     .service:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 18px 38px rgba(0,0,0,0.42);
-  border-color: rgba(255,255,255,0.22);
-}
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 18px 38px rgba(0,0,0,0.42);
+      border-color: rgba(255,255,255,0.22);
+    }
 
     .service::before {
       content: "";
@@ -289,152 +309,152 @@
     }
     
     .service-preview {
-  height: 74px;
-  border-radius: 14px;
-  margin-bottom: 16px;
-  background:
-    linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)),
-    linear-gradient(135deg, rgba(91,167,255,0.25), rgba(138,92,255,0.25));
-  border: 1px solid rgba(255,255,255,0.1);
-  filter: blur(0.2px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffffcc;
-  font-weight: 700;
-  letter-spacing: 0.4px;
-  overflow: hidden;
-  position: relative;
-}
+      height: 74px;
+      border-radius: 14px;
+      margin-bottom: 16px;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)),
+        linear-gradient(135deg, rgba(91,167,255,0.25), rgba(138,92,255,0.25));
+      border: 1px solid rgba(255,255,255,0.1);
+      filter: blur(0.2px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffffcc;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      overflow: hidden;
+      position: relative;
+    }
 
-.service-preview img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-  transition: transform 0.4s ease, filter 0.4s ease;
-}
+    .service-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
 
-.service:hover .service-preview img {
-  transform: scale(1.08);
-  filter: brightness(1.08);
-}
+    .service:hover .service-preview img {
+      transform: scale(1.08);
+      filter: brightness(1.08);
+    }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 14px 22px;
-  border-radius: 999px;
-  font-weight: 700;
-  transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-  border: 1px solid transparent;
-  cursor: pointer;
-  text-align: center;
-}
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-align: center;
+    }
 
-.btn:hover {
-  transform: translateY(-3px);
-}
+    .btn:hover {
+      transform: translateY(-3px);
+    }
 
-.btn:active {
-  transform: scale(0.97);
-}
+    .btn:active {
+      transform: scale(0.97);
+    }
 
-.feature-box,
-.payment-box,
-.review-card,
-.faq-item,
-.step,
-.preview-panel,
-.contact-box {
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
+    .feature-box,
+    .payment-box,
+    .review-card,
+    .faq-item,
+    .step,
+    .preview-panel,
+    .contact-box {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
 
-.feature-box:hover,
-.payment-box:hover,
-.review-card:hover,
-.faq-item:hover,
-.step:hover,
-.preview-panel:hover,
-.contact-box:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 18px 36px rgba(0,0,0,0.35);
-  border-color: rgba(255,255,255,0.2);
-}
+    .feature-box:hover,
+    .payment-box:hover,
+    .review-card:hover,
+    .faq-item:hover,
+    .step:hover,
+    .preview-panel:hover,
+    .contact-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 36px rgba(0,0,0,0.35);
+      border-color: rgba(255,255,255,0.2);
+    }
 
-.whatsapp-float {
-  position: fixed;
-  right: 18px;
-  bottom: 18px;
-  z-index: 1000;
-  background: var(--green);
-  color: white;
-  width: 62px;
-  height: 62px;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-  font-size: 1.6rem;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.35);
-  animation: pulseWhatsapp 1.8s infinite;
-  transition: transform 0.25s ease;
-}
+    .whatsapp-float {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 1000;
+      background: var(--green);
+      color: white;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 1.6rem;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.35);
+      animation: pulseWhatsapp 1.8s infinite;
+      transition: transform 0.25s ease;
+    }
 
-.whatsapp-float:hover {
-  transform: scale(1.08);
-}
+    .whatsapp-float:hover {
+      transform: scale(1.08);
+    }
 
-.hero,
-section,
-footer {
-  animation: fadeUp 0.9s ease both;
-}
+    .hero,
+    section,
+    footer {
+      animation: fadeUp 0.9s ease both;
+    }
 
-section:nth-of-type(2) { animation-delay: 0.08s; }
-section:nth-of-type(3) { animation-delay: 0.16s; }
-section:nth-of-type(4) { animation-delay: 0.24s; }
-section:nth-of-type(5) { animation-delay: 0.32s; }
-section:nth-of-type(6) { animation-delay: 0.40s; }
-section:nth-of-type(7) { animation-delay: 0.48s; }
-section:nth-of-type(8) { animation-delay: 0.56s; }
+    section:nth-of-type(2) { animation-delay: 0.08s; }
+    section:nth-of-type(3) { animation-delay: 0.16s; }
+    section:nth-of-type(4) { animation-delay: 0.24s; }
+    section:nth-of-type(5) { animation-delay: 0.32s; }
+    section:nth-of-type(6) { animation-delay: 0.40s; }
+    section:nth-of-type(7) { animation-delay: 0.48s; }
+    section:nth-of-type(8) { animation-delay: 0.56s; }
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(24px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-@keyframes pulseWhatsapp {
-  0% {
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45);
-  }
-  70% {
-    box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-  }
-}
+    @keyframes pulseWhatsapp {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.45);
+      }
+      70% {
+        box-shadow: 0 0 0 16px rgba(37, 211, 102, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
 
     .service-name {
-  font-size: 1.3rem;
-  font-weight: 800;
-  margin-bottom: 8px;
-}
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
 
-.service-price {
-  font-size: 1.95rem;
-  font-weight: 900;
-  color: var(--yellow);
-  margin-bottom: 6px;
-}
+    .service-price {
+      font-size: 1.95rem;
+      font-weight: 900;
+      color: var(--yellow);
+      margin-bottom: 6px;
+    }
 
     .service-time {
       color: var(--muted);
@@ -460,9 +480,10 @@ section:nth-of-type(8) { animation-delay: 0.56s; }
     }
 
     .service.featured {
-  border: 1px solid rgba(255, 213, 74, 0.45);
-  box-shadow: 0 0 0 1px rgba(255, 213, 74, 0.15), 0 18px 36px rgba(0,0,0,0.35);
-}
+      border: 1px solid rgba(255, 213, 74, 0.45);
+      box-shadow: 0 0 0 1px rgba(255, 213, 74, 0.15), 0 18px 36px rgba(0,0,0,0.35);
+    }
+
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -543,9 +564,10 @@ section:nth-of-type(8) { animation-delay: 0.56s; }
     }
 
     .payment-box.featured {
-  border: 1px solid rgba(37, 211, 102, 0.6);
-  box-shadow: 0 0 0 1px rgba(37, 211, 102, 0.2), 0 18px 36px rgba(0,0,0,0.35);
-}
+      border: 1px solid rgba(37, 211, 102, 0.6);
+      box-shadow: 0 0 0 1px rgba(37, 211, 102, 0.2), 0 18px 36px rgba(0,0,0,0.35);
+    }
+
     .contact-box {
       background:
         linear-gradient(145deg, rgba(91,167,255,0.18), rgba(138,92,255,0.18)),
@@ -612,22 +634,23 @@ section:nth-of-type(8) { animation-delay: 0.56s; }
     }
 
     .payment-logo {
-  width: 100%;
-  height: 90px;
-  border-radius: 14px;
-  overflow: hidden;
-  margin-bottom: 14px;
-  background: rgba(255,255,255,0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+      width: 100%;
+      height: 90px;
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-.payment-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    .payment-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
     .note {
       margin-top: 14px;
       color: var(--muted);
@@ -690,13 +713,25 @@ section:nth-of-type(8) { animation-delay: 0.56s; }
       .hero-actions {
         flex-direction: column;
       }
+
+      .brand {
+        gap: 10px;
+      }
+
+      .brand-logo {
+        width: 38px;
+        height: 38px;
+      }
     }
   </style>
 </head>
 <body>
   <header class="topbar">
     <div class="container nav">
-      <a href="#" class="brand">MC<span>Stream</span></a>
+      <a href="#" class="brand">
+        <img src="MC.jpeg" alt="Logo MC Stream" class="brand-logo">
+        <span class="brand-text">MC<span>  Stream</span></span>
+      </a>
       <nav class="nav-links">
         <a href="#catalogo">Precios</a>
         <a href="#beneficios">Beneficios</a>
@@ -771,117 +806,117 @@ section:nth-of-type(8) { animation-delay: 0.56s; }
         </div>
 
         <div class="catalog">
-         <div class="card service featured">
-          <div class="service-name">Netflix</div>
-          <div class="service-price">$15.000</div>
-          <div class="service-time">Vigencia: 30 días</div>
+          <div class="card service featured">
+            <div class="service-name">Netflix</div>
+            <div class="service-price">$15.000</div>
+            <div class="service-time">Vigencia: 30 días</div>
 
-          <div class="service-preview">
-           <img src="descarga.jpg" alt="Netflix">
+            <div class="service-preview">
+              <img src="descarga.jpg" alt="Netflix">
+            </div>
+
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Netflix%20por%2030%20días" target="_blank">
+              Comprar ahora
+            </a>
           </div>
 
-  <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Netflix%20por%2030%20días" target="_blank">
-    Comprar ahora
-  </a>
-</div>
+          <div class="card service">
+            <div class="service-name">Disney+</div>
+            <div class="service-price">$12.000</div>
+            <div class="service-time">Vigencia: 30 días</div>
 
-<div class="card service">
-  <div class="service-name">Disney+</div>
-  <div class="service-price">$12.000</div>
-  <div class="service-time">Vigencia: 30 días</div>
+            <div class="service-preview">
+              <img src="disnye.jpg" alt="Disney+">
+            </div>
 
-  <div class="service-preview">
-    <img src="disnye.jpg" alt="Disney+">
-  </div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Disney+%20por%2030%20días" target="_blank">
+              Comprar ahora
+            </a>
+          </div>
 
-  <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Disney+%20por%2030%20días" target="_blank">
-    Comprar ahora
-  </a>
-</div>
+          <div class="card service">
+            <div class="service-name">Prime Video</div>
+            <div class="service-price">$7.000</div>
+            <div class="service-time">Vigencia: 30 días</div>
 
-<div class="card service">
-  <div class="service-name">Prime Video</div>
-  <div class="service-price">$7.000</div>
-  <div class="service-time">Vigencia: 30 días</div>
+            <div class="service-preview">
+              <img src="prime.png" alt="Prime Video">
+            </div>
 
-  <div class="service-preview">
-    <img src="prime.png" alt="Prime Video">
-  </div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Prime%20Video%20por%2030%20días" target="_blank">
+              Comprar ahora
+            </a>
+          </div>
 
-  <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Prime%20Video%20por%2030%20días" target="_blank">
-    Comprar ahora
-  </a>
-</div>
+          <div class="card service">
+            <div class="service-name">Vix</div>
+            <div class="service-price">$7.000</div>
+            <div class="service-time">Vigencia: 30 días</div>
 
-<div class="card service">
-  <div class="service-name">Vix</div>
-  <div class="service-price">$7.000</div>
-  <div class="service-time">Vigencia: 30 días</div>
+            <div class="service-preview">
+              <img src="vix.jpg" alt="Vix">
+            </div>
 
-  <div class="service-preview">
-    <img src="vix.jpg" alt="Vix">
-  </div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Vix%20por%2030%20días" target="_blank">
+              Comprar ahora
+            </a>
+          </div>
 
-  <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Vix%20por%2030%20días" target="_blank">
-    Comprar ahora
-  </a>
-</div>
+          <div class="card service">
+            <div class="service-name">Crunchyroll</div>
+            <div class="service-price">$7.000</div>
+            <div class="service-time">Vigencia: 30 días</div>
 
-<div class="card service">
-  <div class="service-name">Crunchyroll</div>
-  <div class="service-price">$7.000</div>
-  <div class="service-time">Vigencia: 30 días</div>
+            <div class="service-preview">
+              <img src="crunchy.png" alt="Crunchyroll">
+            </div>
 
-  <div class="service-preview">
-    <img src="crunchy.png" alt="Crunchyroll">
-  </div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Crunchyroll%20por%2030%20días" target="_blank">
+              Comprar ahora
+            </a>
+          </div>
 
-  <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Crunchyroll%20por%2030%20días" target="_blank">
-    Comprar ahora
-  </a>
-</div>
+          <div class="card service">
+            <div class="service-name">Max</div>
+            <div class="service-price">$7.000</div>
+            <div class="service-time">Vigencia: 30 días</div>
 
-<div class="card service">
-  <div class="service-name">Max</div>
-  <div class="service-price">$7.000</div>
-  <div class="service-time">Vigencia: 30 días</div>
+            <div class="service-preview">
+              <img src="max.jpg" alt="Max">
+            </div>
 
-  <div class="service-preview">
-    <img src="max.jpg" alt="Max">
-  </div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Max%20por%2030%20días" target="_blank">
+              Comprar ahora
+            </a>
+          </div>
 
-  <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Max%20por%2030%20días" target="_blank">
-    Comprar ahora
-  </a>
-</div>
+          <div class="card service">
+            <div class="service-name">Spotify Premium</div>
+            <div class="service-price">$12.000</div>
+            <div class="service-time">Vigencia: 30 días</div>
 
-<div class="card service">
-  <div class="service-name">Spotify Premium</div>
-  <div class="service-price">$12.000</div>
-  <div class="service-time">Vigencia: 30 días</div>
+            <div class="service-preview">
+              <img src="spoti.png" alt="Spotify">
+            </div>
 
-  <div class="service-preview">
-    <img src="spoti.png" alt="Spotify">
-  </div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Spotify%20Premium%20por%2030%20días" target="_blank">
+              Comprar ahora
+            </a>
+          </div>
 
-  <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Spotify%20Premium%20por%2030%20días" target="_blank">
-    Comprar ahora
-  </a>
-</div>
+          <div class="card service">
+            <div class="service-name">YouTube Premium</div>
+            <div class="service-price">$12.000</div>
+            <div class="service-time">Vigencia: 30 días</div>
 
-<div class="card service">
-  <div class="service-name">YouTube Premium</div>
-  <div class="service-price">$12.000</div>
-  <div class="service-time">Vigencia: 30 días</div>
+            <div class="service-preview">
+              <img src="yutu.png" alt="YouTube Premium">
+            </div>
 
-  <div class="service-preview">
-    <img src="yutu.png" alt="YouTube Premium">
-  </div>
-
-  <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20YouTube%20Premium%20por%2030%20días" target="_blank">
-    Comprar ahora
-  </a>
-</div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20YouTube%20Premium%20por%2030%20días" target="_blank">
+              Comprar ahora
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -946,86 +981,81 @@ section:nth-of-type(8) { animation-delay: 0.56s; }
       </div>
     </section>
 
-<section id="pagos">
-  <div class="container">
-    <div class="section-head">
-      <h2>Medios de pago</h2>
-      <p>Elige el método más cómodo para ti. Atención rápida y confirmación inmediata.</p>
-    </div>
-
-    <div class="payments-grid">
-
-      <!-- NEQUI -->
-      <div class="payment-box featured">
-        <div class="payment-logo">
-          <img src="neki.png" alt="Nequi">
+    <section id="pagos">
+      <div class="container">
+        <div class="section-head">
+          <h2>Medios de pago</h2>
+          <p>Elige el método más cómodo para ti. Atención rápida y confirmación inmediata.</p>
         </div>
-        <h3>Nequi</h3>
-        <p># 3154712844 - Juan Campana</p>
-        <span class="payment-tag">Pago inmediato</span>
-      </div>
 
-      <!-- DAVIPLATA -->
-      <div class="payment-box">
-        <div class="payment-logo">
-          <img src="davi.png" alt="Daviplata">
+        <div class="payments-grid">
+
+          <div class="payment-box featured">
+            <div class="payment-logo">
+              <img src="neki.png" alt="Nequi">
+            </div>
+            <h3>Nequi</h3>
+            <p># 3154712844 - Juan Campana</p>
+            <span class="payment-tag">Pago inmediato</span>
+          </div>
+
+          <div class="payment-box">
+            <div class="payment-logo">
+              <img src="davi.png" alt="Daviplata">
+            </div>
+            <h3>Daviplata</h3>
+            <p># 3154712844</p>
+            <span class="payment-tag">Transferencia rápida</span>
+          </div>
+
+          <div class="payment-box">
+            <div class="payment-logo">
+              <img src="bre.png" alt="Llave">
+            </div>
+            <h3>Llave</h3>
+            <p>@3154712844</p>
+            <span class="payment-tag">Pago digital</span>
+          </div>
+
+          <div class="payment-box">
+            <div class="payment-logo">
+              <img src="qr.png" alt="QR">
+            </div>
+            <h3>Pago con QR</h3>
+            <p>Escanea el código para pagar fácilmente</p>
+            <span class="payment-tag">Escanea y paga</span>
+          </div>
+
+          <div class="payment-box">
+            <div class="payment-logo">
+              <img src="nu.png" alt="Nu">
+            </div>
+            <h3>Nu</h3>
+            <p>NU placa: OJT735</p>
+            <span class="payment-tag">Soporte directo</span>
+          </div>
+
+          <div class="payment-box">
+            <div class="payment-logo">
+              <div style="font-size: 2rem;">💳</div>
+            </div>
+            <h3>Otros medios</h3>
+            <p>Consulta por WhatsApp para más opciones disponibles.</p>
+            <span class="payment-tag">Atención directa</span>
+          </div>
+
         </div>
-        <h3>Daviplata</h3>
-        <p># 3154712844</p>
-        <span class="payment-tag">Transferencia rápida</span>
-      </div>
 
-      <!-- LLAVE / BRE-B -->
-      <div class="payment-box">
-        <div class="payment-logo">
-          <img src="bre.png" alt="Llave">
+        <p class="note">Si tienes dudas sobre los pagos, escríbenos por WhatsApp.</p>
+
+        <div style="text-align:center; margin-top:18px;">
+          <a class="btn btn-secondary" href="https://wa.me/573154712844?text=Hola,%20quiero%20ver%20los%20medios%20de%20pago" target="_blank">
+            Consultar medios de pago
+          </a>
         </div>
-        <h3>Llave</h3>
-        <p>@3154712844</p>
-        <span class="payment-tag">Pago digital</span>
       </div>
+    </section>
 
-      <!-- QR -->
-      <div class="payment-box">
-        <div class="payment-logo">
-          <img src="qr.png" alt="QR">
-        </div>
-        <h3>Pago con QR</h3>
-        <p>Escanea el código para pagar fácilmente</p>
-        <span class="payment-tag">Escanea y paga</span>
-      </div>
-
-      <!-- NU -->
-      <div class="payment-box">
-        <div class="payment-logo">
-          <img src="nu.png" alt="Nu">
-        </div>
-        <h3>Nu</h3>
-        <p>NU placa: OJT735</p>
-        <span class="payment-tag">Soporte directo</span>
-      </div>
-
-      <!-- OTROS -->
-      <div class="payment-box">
-        <div class="payment-logo">
-          <div style="font-size: 2rem;">💳</div>
-        </div>
-        <h3>Otros medios</h3>
-        <p>Consulta por WhatsApp para más opciones disponibles.</p>
-        <span class="payment-tag">Atención directa</span>
-      </div>
-
-    </div>
-
-    <p class="note">Si tienes dudas sobre los pagos, escríbenos por WhatsApp.</p>
-
-    <div style="text-align:center; margin-top:18px;">
-      <a class="btn btn-secondary" href="https://wa.me/573154712844?text=Hola,%20quiero%20ver%20los%20medios%20de%20pago" target="_blank">
-        Consultar medios de pago
-      </a>
-    </div>
-  </div>
-</section>
     <section id="calificaciones">
       <div class="container">
         <div class="section-head">
