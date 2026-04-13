@@ -8,6 +8,8 @@
     name="description"
     content="Pantallas por 30 días con activación rápida, atención por WhatsApp y medios de pago disponibles."
   />
+  <link rel="icon" type="image/jpeg" href="MC.jpeg" />
+
   <style>
     :root {
       --bg: #0b1020;
@@ -79,30 +81,29 @@
     }
 
     .brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 1.2rem;
-  font-weight: 800;
-  letter-spacing: 0.3px;
-}
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
 
-.brand-logo {
-  width: 58px;
-  height: 58px;
-  border-radius: 14px;
-  object-fit: cover;
-  border: 2px solid rgba(255,255,255,0.18);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.30);
-  background: rgba(255,255,255,0.08);
-  padding: 4px;
-  flex-shrink: 0;
-}
+    .brand-logo {
+      width: 58px;
+      height: 58px;
+      border-radius: 14px;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,0.18);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.30);
+      background: rgba(255,255,255,0.08);
+      padding: 4px;
+      flex-shrink: 0;
+    }
 
     .brand-text {
       display: inline-flex;
       align-items: center;
-      gap: 0;
     }
 
     .brand span {
@@ -169,6 +170,34 @@
       grid-template-columns: 1.15fr 0.85fr;
       gap: 32px;
       align-items: center;
+    }
+
+    .hero-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding: 10px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-brand img {
+      width: 54px;
+      height: 54px;
+      object-fit: cover;
+      border-radius: 14px;
+      border: 2px solid rgba(255,255,255,0.16);
+      padding: 3px;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .hero-brand span {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
     }
 
     .hero h1 {
@@ -580,6 +609,18 @@
       text-align: center;
     }
 
+    .contact-logo {
+      width: 82px;
+      height: 82px;
+      margin: 0 auto 18px;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,0.16);
+      padding: 5px;
+      background: rgba(255,255,255,0.08);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.35);
+    }
+
     .contact-box h2 {
       font-size: clamp(1.8rem, 3vw, 2.8rem);
       margin-bottom: 12px;
@@ -610,6 +651,22 @@
       align-items: center;
       border-top: 1px solid var(--border);
       padding-top: 22px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-brand img {
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,0.15);
+      padding: 3px;
+      background: rgba(255,255,255,0.06);
     }
 
     .footer-links {
@@ -715,13 +772,19 @@
         flex-direction: column;
       }
 
-      .brand {
-        gap: 10px;
+      .brand-logo {
+        width: 50px;
+        height: 50px;
       }
 
-      .brand-logo {
-        width: 38px;
-        height: 38px;
+      .hero-brand img {
+        width: 46px;
+        height: 46px;
+      }
+
+      .contact-logo {
+        width: 70px;
+        height: 70px;
       }
     }
   </style>
@@ -730,8 +793,8 @@
   <header class="topbar">
     <div class="container nav">
       <a href="#" class="brand">
-       <img src="MC.jpeg" alt="Logo MC Stream" class="brand-logo">
-       <span class="brand-text">MC<span>Stream</span></span>
+        <img src="MC.jpeg" alt="Logo MC Stream" class="brand-logo">
+        <span class="brand-text">MC<span>Stream</span></span>
       </a>
       <nav class="nav-links">
         <a href="#catalogo">Precios</a>
@@ -748,6 +811,11 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
+          <div class="hero-brand">
+            <img src="MC.jpeg" alt="Logo MC Stream">
+            <span>MC Stream</span>
+          </div>
+
           <h1>Todo tu <span class="highlight">entretenimiento</span> en un solo lugar</h1>
           <p>
             Pantallas por 30 días con activación rápida, atención directa por WhatsApp
@@ -807,117 +875,117 @@
         </div>
 
         <div class="catalog">
-          <div class="card service featured">
-            <div class="service-name">Netflix</div>
-            <div class="service-price">$15.000</div>
-            <div class="service-time">Vigencia: 30 días</div>
+         <div class="card service featured">
+          <div class="service-name">Netflix</div>
+          <div class="service-price">$15.000</div>
+          <div class="service-time">Vigencia: 30 días</div>
 
-            <div class="service-preview">
-              <img src="descarga.jpg" alt="Netflix">
-            </div>
-
-            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Netflix%20por%2030%20días" target="_blank">
-              Comprar ahora
-            </a>
+          <div class="service-preview">
+           <img src="descarga.jpg" alt="Netflix">
           </div>
 
-          <div class="card service">
-            <div class="service-name">Disney+</div>
-            <div class="service-price">$12.000</div>
-            <div class="service-time">Vigencia: 30 días</div>
+          <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Netflix%20por%2030%20días" target="_blank">
+            Comprar ahora
+          </a>
+        </div>
 
-            <div class="service-preview">
-              <img src="disnye.jpg" alt="Disney+">
-            </div>
+        <div class="card service">
+          <div class="service-name">Disney+</div>
+          <div class="service-price">$12.000</div>
+          <div class="service-time">Vigencia: 30 días</div>
 
-            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Disney+%20por%2030%20días" target="_blank">
-              Comprar ahora
-            </a>
+          <div class="service-preview">
+            <img src="disnye.jpg" alt="Disney+">
           </div>
 
-          <div class="card service">
-            <div class="service-name">Prime Video</div>
-            <div class="service-price">$7.000</div>
-            <div class="service-time">Vigencia: 30 días</div>
+          <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Disney+%20por%2030%20días" target="_blank">
+            Comprar ahora
+          </a>
+        </div>
 
-            <div class="service-preview">
-              <img src="prime.png" alt="Prime Video">
-            </div>
+        <div class="card service">
+          <div class="service-name">Prime Video</div>
+          <div class="service-price">$7.000</div>
+          <div class="service-time">Vigencia: 30 días</div>
 
-            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Prime%20Video%20por%2030%20días" target="_blank">
-              Comprar ahora
-            </a>
+          <div class="service-preview">
+            <img src="prime.png" alt="Prime Video">
           </div>
 
-          <div class="card service">
-            <div class="service-name">Vix</div>
-            <div class="service-price">$7.000</div>
-            <div class="service-time">Vigencia: 30 días</div>
+          <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Prime%20Video%20por%2030%20días" target="_blank">
+            Comprar ahora
+          </a>
+        </div>
 
-            <div class="service-preview">
-              <img src="vix.jpg" alt="Vix">
-            </div>
+        <div class="card service">
+          <div class="service-name">Vix</div>
+          <div class="service-price">$7.000</div>
+          <div class="service-time">Vigencia: 30 días</div>
 
-            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Vix%20por%2030%20días" target="_blank">
-              Comprar ahora
-            </a>
+          <div class="service-preview">
+            <img src="vix.jpg" alt="Vix">
           </div>
 
-          <div class="card service">
-            <div class="service-name">Crunchyroll</div>
-            <div class="service-price">$7.000</div>
-            <div class="service-time">Vigencia: 30 días</div>
+          <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Vix%20por%2030%20días" target="_blank">
+            Comprar ahora
+          </a>
+        </div>
 
-            <div class="service-preview">
-              <img src="crunchy.png" alt="Crunchyroll">
-            </div>
+        <div class="card service">
+          <div class="service-name">Crunchyroll</div>
+          <div class="service-price">$7.000</div>
+          <div class="service-time">Vigencia: 30 días</div>
 
-            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Crunchyroll%20por%2030%20días" target="_blank">
-              Comprar ahora
-            </a>
+          <div class="service-preview">
+            <img src="crunchy.png" alt="Crunchyroll">
           </div>
 
-          <div class="card service">
-            <div class="service-name">Max</div>
-            <div class="service-price">$7.000</div>
-            <div class="service-time">Vigencia: 30 días</div>
+          <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Crunchyroll%20por%2030%20días" target="_blank">
+            Comprar ahora
+          </a>
+        </div>
 
-            <div class="service-preview">
-              <img src="max.jpg" alt="Max">
-            </div>
+        <div class="card service">
+          <div class="service-name">Max</div>
+          <div class="service-price">$7.000</div>
+          <div class="service-time">Vigencia: 30 días</div>
 
-            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Max%20por%2030%20días" target="_blank">
-              Comprar ahora
-            </a>
+          <div class="service-preview">
+            <img src="max.jpg" alt="Max">
           </div>
 
-          <div class="card service">
-            <div class="service-name">Spotify Premium</div>
-            <div class="service-price">$12.000</div>
-            <div class="service-time">Vigencia: 30 días</div>
+          <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Max%20por%2030%20días" target="_blank">
+            Comprar ahora
+          </a>
+        </div>
 
-            <div class="service-preview">
-              <img src="spoti.png" alt="Spotify">
-            </div>
+        <div class="card service">
+          <div class="service-name">Spotify Premium</div>
+          <div class="service-price">$12.000</div>
+          <div class="service-time">Vigencia: 30 días</div>
 
-            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Spotify%20Premium%20por%2030%20días" target="_blank">
-              Comprar ahora
-            </a>
+          <div class="service-preview">
+            <img src="spoti.png" alt="Spotify">
           </div>
 
-          <div class="card service">
-            <div class="service-name">YouTube Premium</div>
-            <div class="service-price">$12.000</div>
-            <div class="service-time">Vigencia: 30 días</div>
+          <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Spotify%20Premium%20por%2030%20días" target="_blank">
+            Comprar ahora
+          </a>
+        </div>
 
-            <div class="service-preview">
-              <img src="yutu.png" alt="YouTube Premium">
-            </div>
+        <div class="card service">
+          <div class="service-name">YouTube Premium</div>
+          <div class="service-price">$12.000</div>
+          <div class="service-time">Vigencia: 30 días</div>
 
-            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20YouTube%20Premium%20por%2030%20días" target="_blank">
-              Comprar ahora
-            </a>
+          <div class="service-preview">
+            <img src="yutu.png" alt="YouTube Premium">
           </div>
+
+          <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20YouTube%20Premium%20por%2030%20días" target="_blank">
+            Comprar ahora
+          </a>
+        </div>
         </div>
       </div>
     </section>
@@ -1125,6 +1193,7 @@
     <section id="contacto">
       <div class="container">
         <div class="contact-box">
+          <img src="MC.jpeg" alt="Logo MC Stream" class="contact-logo">
           <h2>Haz tu pedido ahora mismo</h2>
           <p>Estamos listos para atenderte por WhatsApp.</p>
           <div class="contact-number">3154712844</div>
@@ -1136,9 +1205,12 @@
 
   <footer>
     <div class="container footer-box">
-      <div>
-        <strong style="color: var(--text);">MC Stream</strong><br>
-        Atención por WhatsApp · Planes por 30 días
+      <div class="footer-brand">
+        <img src="MC.jpeg" alt="Logo MC Stream">
+        <div>
+          <strong style="color: var(--text);">MC Stream</strong><br>
+          Atención por WhatsApp · Planes por 30 días
+        </div>
       </div>
       <div class="footer-links">
         <a href="#catalogo">Catálogo</a>
