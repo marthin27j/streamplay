@@ -134,10 +134,18 @@
       padding: 14px 22px;
       border-radius: 999px;
       font-weight: 700;
-      transition: 0.25s ease;
+      transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
       border: 1px solid transparent;
       cursor: pointer;
       text-align: center;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn:active {
+      transform: scale(0.97);
     }
 
     .btn-primary {
@@ -147,7 +155,6 @@
     }
 
     .btn-primary:hover {
-      transform: translateY(-2px);
       filter: brightness(1.03);
     }
 
@@ -337,9 +344,9 @@
         radial-gradient(circle at bottom left, rgba(138,92,255,0.14), transparent 25%);
       pointer-events: none;
     }
-    
+
     .service-preview {
-      height: 74px;
+      height: 120px;
       border-radius: 14px;
       margin-bottom: 16px;
       background:
@@ -368,28 +375,6 @@
     .service:hover .service-preview img {
       transform: scale(1.08);
       filter: brightness(1.08);
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 14px 22px;
-      border-radius: 999px;
-      font-weight: 700;
-      transition: transform 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-      border: 1px solid transparent;
-      cursor: pointer;
-      text-align: center;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-    }
-
-    .btn:active {
-      transform: scale(0.97);
     }
 
     .feature-box,
@@ -490,23 +475,6 @@
       color: var(--muted);
       margin-bottom: 16px;
       font-size: 0.95rem;
-    }
-
-    .service-preview {
-      height: 120px;
-      border-radius: 14px;
-      margin-bottom: 16px;
-      background:
-        linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)),
-        linear-gradient(135deg, rgba(91,167,255,0.25), rgba(138,92,255,0.25));
-      border: 1px solid rgba(255,255,255,0.1);
-      filter: blur(0.2px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #ffffffcc;
-      font-weight: 700;
-      letter-spacing: 0.4px;
     }
 
     .service.featured {
@@ -673,22 +641,6 @@
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-    }
-
-    .whatsapp-float {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 1000;
-      background: var(--green);
-      color: white;
-      width: 62px;
-      height: 62px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      font-size: 1.6rem;
-      box-shadow: 0 14px 28px rgba(0,0,0,0.35);
     }
 
     .payment-logo {
@@ -862,6 +814,14 @@
               <span style="color:#1DB954;">Spotify Premium</span>
               <small>$12.000 / 30 días</small>
             </div>
+            <div class="mini-card">
+              <span style="color:#ff2c55;">CapCut Pro</span>
+              <small>$25.000 / 30 días</small>
+            </div>
+            <div class="mini-card">
+              <span style="color:#10a37f;">ChatGPT Premium</span>
+              <small>$25.000 / 30 días</small>
+            </div>
           </div>
         </div>
       </div>
@@ -870,122 +830,90 @@
     <section id="catalogo">
       <div class="container">
         <div class="section-head">
-          <h2>Catálogo y precios</h2>
-          <p>Elige tu pantalla favorita. Todas las opciones tienen vigencia de 30 días.</p>
+          <h2>Nuestros Planes Mensuales</h2>
+          <p>Elige tu plataforma favorita. Todos los accesos son por 30 días garantizados.</p>
         </div>
 
         <div class="catalog">
-         <div class="card service featured">
-          <div class="service-name">Netflix</div>
-          <div class="service-price">$15.000</div>
-          <div class="service-time">Vigencia: 30 días</div>
-
-          <div class="service-preview">
-           <img src="descarga.jpg" alt="Netflix">
+          <div class="card service featured">
+            <div class="service-preview">
+              <span style="color:#e50914; font-size:1.5rem;">Netflix</span>
+            </div>
+            <div class="service-name">Netflix Premium</div>
+            <div class="service-price">$15.000</div>
+            <div class="service-time">Plan 30 días - 1 Pantalla Ultra HD</div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20Netflix%20por%2030%20días" target="_blank">Pedir ahora</a>
           </div>
 
-          <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Netflix%20por%2030%20días" target="_blank">
-            Comprar ahora
-          </a>
-        </div>
-
-        <div class="card service">
-          <div class="service-name">Disney+</div>
-          <div class="service-price">$12.000</div>
-          <div class="service-time">Vigencia: 30 días</div>
-
-          <div class="service-preview">
-            <img src="disnye.jpg" alt="Disney+">
+          <div class="card service">
+            <div class="service-preview">
+              <span style="color:#00A8E1; font-size:1.5rem;">Disney+</span>
+            </div>
+            <div class="service-name">Disney+ Estándar</div>
+            <div class="service-price">$12.000</div>
+            <div class="service-time">Plan 30 días - Acceso completo</div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20Disney+%20por%2030%20días" target="_blank">Pedir ahora</a>
           </div>
 
-          <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Disney+%20por%2030%20días" target="_blank">
-            Comprar ahora
-          </a>
-        </div>
-
-        <div class="card service">
-          <div class="service-name">Prime Video</div>
-          <div class="service-price">$7.000</div>
-          <div class="service-time">Vigencia: 30 días</div>
-
-          <div class="service-preview">
-            <img src="prime.png" alt="Prime Video">
+          <div class="card service">
+            <div class="service-preview">
+              <span style="color:#0F79AF; font-size:1.5rem;">Prime Video</span>
+            </div>
+            <div class="service-name">Prime Video</div>
+            <div class="service-price">$7.000</div>
+            <div class="service-time">Plan 30 días - En tus dispositivos</div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20Prime%20Video%20por%2030%20días" target="_blank">Pedir ahora</a>
           </div>
 
-          <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Prime%20Video%20por%2030%20días" target="_blank">
-            Comprar ahora
-          </a>
-        </div>
-
-        <div class="card service">
-          <div class="service-name">Vix</div>
-          <div class="service-price">$7.000</div>
-          <div class="service-time">Vigencia: 30 días</div>
-
-          <div class="service-preview">
-            <img src="vix.jpg" alt="Vix">
+          <div class="card service">
+            <div class="service-preview">
+              <span style="color:#ffffff; font-size:1.5rem;">Max</span>
+            </div>
+            <div class="service-name">Max (HBO)</div>
+            <div class="service-price">$7.000</div>
+            <div class="service-time">Plan 30 días - Series y Películas</div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20Max%20por%2030%20días" target="_blank">Pedir ahora</a>
           </div>
 
-          <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Vix%20por%2030%20días" target="_blank">
-            Comprar ahora
-          </a>
-        </div>
-
-        <div class="card service">
-          <div class="service-name">Crunchyroll</div>
-          <div class="service-price">$7.000</div>
-          <div class="service-time">Vigencia: 30 días</div>
-
-          <div class="service-preview">
-            <img src="crunchy.png" alt="Crunchyroll">
+          <div class="card service">
+            <div class="service-preview">
+              <span style="color:#f47521; font-size:1.5rem;">Crunchyroll</span>
+            </div>
+            <div class="service-name">Crunchyroll</div>
+            <div class="service-price">$7.000</div>
+            <div class="service-time">Plan 30 días - Anime sin anuncios</div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20Crunchyroll%20por%2030%20días" target="_blank">Pedir ahora</a>
           </div>
 
-          <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Crunchyroll%20por%2030%20días" target="_blank">
-            Comprar ahora
-          </a>
-        </div>
-
-        <div class="card service">
-          <div class="service-name">Max</div>
-          <div class="service-price">$7.000</div>
-          <div class="service-time">Vigencia: 30 días</div>
-
-          <div class="service-preview">
-            <img src="max.jpg" alt="Max">
+          <div class="card service">
+            <div class="service-preview">
+              <span style="color:#1DB954; font-size:1.5rem;">Spotify</span>
+            </div>
+            <div class="service-name">Spotify Premium</div>
+            <div class="service-price">$12.000</div>
+            <div class="service-time">Plan 30 días - Música ilimitada offline</div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20Spotify%20Premium%20por%2030%20días" target="_blank">Pedir ahora</a>
           </div>
 
-          <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Max%20por%2030%20días" target="_blank">
-            Comprar ahora
-          </a>
-        </div>
-
-        <div class="card service">
-          <div class="service-name">Spotify Premium</div>
-          <div class="service-price">$12.000</div>
-          <div class="service-time">Vigencia: 30 días</div>
-
-          <div class="service-preview">
-            <img src="spoti.png" alt="Spotify">
+          <div class="card service">
+            <div class="service-preview">
+              <span style="color:#ff2c55; font-size:1.4rem;">CapCut Pro</span>
+            </div>
+            <div class="service-name">CapCut Pro</div>
+            <div class="service-price">$25.000</div>
+            <div class="service-time">Plan 30 días - Edición profesional sin marcas</div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20CapCut%20Pro%20por%2030%20días" target="_blank">Pedir ahora</a>
           </div>
 
-          <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20Spotify%20Premium%20por%2030%20días" target="_blank">
-            Comprar ahora
-          </a>
-        </div>
-
-        <div class="card service">
-          <div class="service-name">YouTube Premium</div>
-          <div class="service-price">$12.000</div>
-          <div class="service-time">Vigencia: 30 días</div>
-
-          <div class="service-preview">
-            <img src="yutu.png" alt="YouTube Premium">
+          <div class="card service">
+            <div class="service-preview">
+              <span style="color:#10a37f; font-size:1.4rem;">ChatGPT Premium</span>
+            </div>
+            <div class="service-name">ChatGPT Premium</div>
+            <div class="service-price">$25.000</div>
+            <div class="service-time">Plan 30 días - Acceso Plus e Inteligencia Artificial</div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20ChatGPT%20Premium%20por%2030%20días" target="_blank">Pedir ahora</a>
           </div>
-
-          <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20YouTube%20Premium%20por%2030%20días" target="_blank">
-            Comprar ahora
-          </a>
-        </div>
         </div>
       </div>
     </section>
@@ -993,59 +921,22 @@
     <section id="beneficios">
       <div class="container">
         <div class="section-head">
-          <h2>¿Por qué elegirnos?</h2>
-          <p>Una experiencia simple, rápida y orientada a que compres sin complicaciones.</p>
+          <h2>¿Por qué elegir MC Stream?</h2>
+          <p>Nos enfocamos en darte la mejor experiencia de usuario con garantías reales.</p>
         </div>
-
         <div class="grid-3">
           <div class="feature-box">
-            <h3>⚡ Activación rápida</h3>
-            <p>Te atendemos por WhatsApp y agilizamos tu pedido para que tengas acceso cuanto antes.</p>
+            <h3>⚡ Activación Inmediata</h3>
+            <p>Una vez confirmado tu pago, gestionamos tu cuenta lo más rápido posible para que no dejes de ver tu contenido.</p>
           </div>
           <div class="feature-box">
-            <h3>💰 Precios accesibles</h3>
-            <p>Opciones para distintos presupuestos, todas con duración de 30 días.</p>
+            <h3>🔒 Garantía Total</h3>
+            <p>Todos nuestros planes cubren los 30 días completos. Si surge algún inconveniente, te damos soporte directo.</p>
           </div>
           <div class="feature-box">
-            <h3>📲 Atención directa</h3>
-            <p>Contacto claro, rápido y sin formularios complicados. Todo desde tu celular.</p>
+            <h3>📲 Soporte por WhatsApp</h3>
+            <p>¿Tienes dudas o necesitas ayuda? Nos escribes a un solo clic y te atenderemos de forma personalizada.</p>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="como-comprar">
-      <div class="container">
-        <div class="section-head">
-          <h2>Cómo comprar</h2>
-          <p>Haz tu pedido en pocos pasos.</p>
-        </div>
-
-        <div class="steps">
-          <div class="step">
-            <div class="step-number">1</div>
-            <h3>Elige tu pantalla</h3>
-            <p>Revisa el catálogo y selecciona la opción que deseas comprar.</p>
-          </div>
-          <div class="step">
-            <div class="step-number">2</div>
-            <h3>Escríbenos por WhatsApp</h3>
-            <p>Presiona cualquier botón de compra y llegarás directo a nuestro chat.</p>
-          </div>
-          <div class="step">
-            <div class="step-number">3</div>
-            <h3>Realiza el pago</h3>
-            <p>Te compartimos los medios disponibles para completar tu pedido.</p>
-          </div>
-          <div class="step">
-            <div class="step-number">4</div>
-            <h3>Recibe tu acceso</h3>
-            <p>Confirmamos tu compra y continuamos con la entrega correspondiente.</p>
-          </div>
-        </div>
-
-        <div style="text-align:center;">
-          <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20hacer%20mi%20pedido" target="_blank">Pedir por WhatsApp</a>
         </div>
       </div>
     </section>
@@ -1053,74 +944,25 @@
     <section id="pagos">
       <div class="container">
         <div class="section-head">
-          <h2>Medios de pago</h2>
-          <p>Elige el método más cómodo para ti. Atención rápida y confirmación inmediata.</p>
+          <h2>Medios de Pago Disponibles</h2>
+          <p>Elige el método que más te convenga para realizar tu compra de forma segura.</p>
         </div>
-
         <div class="payments-grid">
-
+          <div class="payment-box">
+            <h3>Transferencia Bancaria</h3>
+            <p>Nequi, Daviplata o Bancolombia.</p>
+            <span class="payment-tag">Inmediato</span>
+          </div>
           <div class="payment-box featured">
-            <div class="payment-logo">
-              <img src="neki.png" alt="Nequi">
-            </div>
-            <h3>Nequi</h3>
-            <p># 3154712844 - Juan Campana</p>
-            <span class="payment-tag">Pago inmediato</span>
+            <h3>Atención 100% Directa</h3>
+            <p>Paga de forma guiada enviando tu comprobante por chat.</p>
+            <span class="payment-tag" style="background:rgba(37,211,102,0.2); color:#25d366;">Recomendado</span>
           </div>
-
           <div class="payment-box">
-            <div class="payment-logo">
-              <img src="davi.png" alt="Daviplata">
-            </div>
-            <h3>Daviplata</h3>
-            <p># 3154712844</p>
-            <span class="payment-tag">Transferencia rápida</span>
+            <h3>Otros Métodos</h3>
+            <p>Consulta por WhatsApp si manejamos otros giros.</p>
+            <span class="payment-tag">Sujeto a cambios</span>
           </div>
-
-          <div class="payment-box">
-            <div class="payment-logo">
-              <img src="bre.png" alt="Llave">
-            </div>
-            <h3>Llave</h3>
-            <p>@3154712844</p>
-            <span class="payment-tag">Pago digital</span>
-          </div>
-
-          <div class="payment-box">
-            <div class="payment-logo">
-              <img src="qr.png" alt="QR">
-            </div>
-            <h3>Pago con QR</h3>
-            <p>Escanea el código para pagar fácilmente</p>
-            <span class="payment-tag">Escanea y paga</span>
-          </div>
-
-          <div class="payment-box">
-            <div class="payment-logo">
-              <img src="nu.png" alt="Nu">
-            </div>
-            <h3>Nu</h3>
-            <p>NU placa: OJT735</p>
-            <span class="payment-tag">Soporte directo</span>
-          </div>
-
-          <div class="payment-box">
-            <div class="payment-logo">
-              <div style="font-size: 2rem;">💳</div>
-            </div>
-            <h3>Otros medios</h3>
-            <p>Consulta por WhatsApp para más opciones disponibles.</p>
-            <span class="payment-tag">Atención directa</span>
-          </div>
-
-        </div>
-
-        <p class="note">Si tienes dudas sobre los pagos, escríbenos por WhatsApp.</p>
-
-        <div style="text-align:center; margin-top:18px;">
-          <a class="btn btn-secondary" href="https://wa.me/573154712844?text=Hola,%20quiero%20ver%20los%20medios%20de%20pago" target="_blank">
-            Consultar medios de pago
-          </a>
         </div>
       </div>
     </section>
@@ -1128,77 +970,59 @@
     <section id="calificaciones">
       <div class="container">
         <div class="section-head">
-          <h2>Calificaciones y reseñas</h2>
-          <p>Una sección pensada para generar confianza gracias a la opinion de nuestros clientes.</p>
+          <h2>Lo que dicen nuestros clientes</h2>
+          <p>La confianza de nuestros usuarios es nuestra mayor carta de presentación.</p>
         </div>
-
         <div class="reviews-grid">
           <div class="review-card">
-            <div class="rating">★★★★★</div>
-            <h3>Maria O.</h3>
-            <p>Rápida atención y activación. Muy recomendado.</p>
+            <div class="rating">⭐⭐⭐⭐⭐</div>
+            <h3>Excelente servicio</h3>
+            <p>"Llevo 3 meses comprando Netflix y Disney y todo marcha súper bien, las cuentas cargan rápido."</p>
           </div>
           <div class="review-card">
-            <div class="rating">★★★★★</div>
-            <h3>Cristian C.</h3>
-            <p>Buen precio y proceso fácil. Me respondieron rápido.</p>
+            <div class="rating">⭐⭐⭐⭐⭐</div>
+            <h3>Muy recomendados</h3>
+            <p>"La atención por WhatsApp es súper rápida. El soporte me resolvió una duda al instante."</p>
           </div>
           <div class="review-card">
-            <div class="rating">★★★★★</div>
-            <h3>Diana P.</h3>
-            <p>Todo excelente, la compra fue clara y sencilla.</p>
+            <div class="rating">⭐⭐⭐⭐⭐</div>
+            <h3>Precios justos</h3>
+            <p>"CapCut Pro me ha servido muchísimo para editar mis videos. El precio está increíble."</p>
           </div>
         </div>
-
-        <p class="note">Calificación visual sugerida: <strong style="color:#ffd54a;">4.9/5</strong></p>
       </div>
     </section>
 
     <section id="faq">
       <div class="container">
         <div class="section-head">
-          <h2>Preguntas frecuentes</h2>
-          <p>Respuestas rápidas para resolver dudas antes de comprar.</p>
+          <h2>Preguntas Frecuentes</h2>
+          <p>Resolvemos tus dudas principales antes de adquirir un plan.</p>
         </div>
-
         <div class="faq-grid">
           <div class="faq-item">
-            <h3>¿Cuánto dura cada pantalla?</h3>
-            <p>Todas las opciones publicadas en esta página tienen una vigencia de 30 días.</p>
+            <h3>¿Las cuentas son compartidas o completas?</h3>
+            <p>Ofrecemos venta por pantallas asignadas individualmente con tu propio perfil. También puedes consultar por cuentas completas.</p>
           </div>
           <div class="faq-item">
-            <h3>¿Cómo hago el pago?</h3>
-            <p>Puedes consultar los medios disponibles en la sección de pagos o escribirnos por WhatsApp.</p>
+            <h3>¿Qué pasa si mi pantalla se cae?</h3>
+            <p>Cuentas con garantía completa durante los 30 días. Nos escribes al WhatsApp y lo solucionamos de inmediato.</p>
           </div>
           <div class="faq-item">
-            <h3>¿Cómo recibo el acceso?</h3>
-            <p>Después de confirmar tu pedido y pago, seguimos el proceso de entrega por WhatsApp.</p>
-          </div>
-          <div class="faq-item">
-            <h3>¿La atención es por WhatsApp?</h3>
-            <p>Sí, toda la atención y gestión del pedido se realiza directamente por WhatsApp.</p>
-          </div>
-          <div class="faq-item">
-            <h3>¿Puedo pedir más de una pantalla?</h3>
-            <p>Sí, puedes solicitar varias opciones. Escríbenos y te ayudamos con tu pedido.</p>
-          </div>
-          <div class="faq-item">
-            <h3>¿Puedo consultar antes de comprar?</h3>
-            <p>Sí. Puedes escribirnos sin compromiso para resolver dudas sobre precios o medios de pago.</p>
+            <h3>¿Cómo recibo mis credenciales?</h3>
+            <p>Tras enviar tu comprobante de pago vía WhatsApp, te entregaremos el correo y contraseña junto con las instrucciones correspondientes.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contacto">
-      <div class="container">
-        <div class="contact-box">
-          <img src="MC.jpeg" alt="Logo MC Stream" class="contact-logo">
-          <h2>Haz tu pedido ahora mismo</h2>
-          <p>Estamos listos para atenderte por WhatsApp.</p>
-          <div class="contact-number">3154712844</div>
-          <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20hacer%20mi%20pedido%20ahora" target="_blank">Contactar por WhatsApp</a>
-        </div>
+    <section class="container">
+      <div class="contact-box">
+        <img src="MC.jpeg" alt="Logo MC Stream" class="contact-logo">
+        <h2>¿Listo para empezar a ver?</h2>
+        <p>Escríbenos directamente para asignarte tu pantalla hoy mismo.</p>
+        <div class="contact-number">+57 315 4712844</div>
+        <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20comprar%20una%20plataforma" target="_blank">Chatear ahora mismo</a>
       </div>
     </section>
   </main>
@@ -1207,26 +1031,16 @@
     <div class="container footer-box">
       <div class="footer-brand">
         <img src="MC.jpeg" alt="Logo MC Stream">
-        <div>
-          <strong style="color: var(--text);">MC Stream</strong><br>
-          Atención por WhatsApp · Planes por 30 días
-        </div>
+        <span>© 2026 MC Stream. Todos los derechos reservados.</span>
       </div>
       <div class="footer-links">
-        <a href="#catalogo">Catálogo</a>
-        <a href="#pagos">Pagos</a>
-        <a href="#calificaciones">Calificaciones</a>
-        <a href="#contacto">Contacto</a>
+        <a href="#catalogo">Precios</a>
+        <a href="#beneficios">Beneficios</a>
+        <a href="#faq">Ayuda</a>
       </div>
     </div>
   </footer>
 
-  <a
-    class="whatsapp-float"
-    href="https://wa.me/573154712844?text=Hola,%20quiero%20información"
-    target="_blank"
-    aria-label="WhatsApp"
-    title="WhatsApp"
-  >💬</a>
+  <a href="https://wa.me/573154712844?text=Hola,%20vengo%20de%20la%20página%20web" class="whatsapp-float" target="_blank">📲</a>
 </body>
 </html>
