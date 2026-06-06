@@ -310,10 +310,10 @@
     }
 
     .catalog {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+}
 
     .card {
       background: var(--card);
@@ -822,6 +822,15 @@
               <span style="color:#10a37f;">ChatGPT Premium</span>
               <small>$25.000 / 30 días</small>
             </div>
+            <div class="mini-card">
+  <span style="color:#00AEEF;">Paramount+</span>
+  <small>$8.000 / 30 días</small>
+</div>
+
+<div class="mini-card">
+  <span style="color:#FF0000;">YouTube Premium</span>
+  <small>$12.000 / 30 días</small>
+</div>
           </div>
         </div>
       </div>
@@ -894,7 +903,24 @@
             <div class="service-time">Plan 30 días - Música ilimitada offline</div>
             <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20Spotify%20Premium%20por%2030%20días" target="_blank">Pedir ahora</a>
           </div>
-
+          <div class="card service">
+  <div class="service-preview">
+    <span style="color:#00AEEF; font-size:1.4rem;">Paramount+</span>
+  </div>
+  <div class="service-name">Paramount+</div>
+  <div class="service-price">$8.000</div>
+  <div class="service-time">Plan 30 días - Acceso completo</div>
+  <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20Paramount+%20por%2030%20días" target="_blank">Pedir ahora</a>
+</div>
+          <div class="card service">
+  <div class="service-preview">
+    <span style="color:#FF0000; font-size:1.4rem;">YouTube Premium</span>
+  </div>
+  <div class="service-name">YouTube Premium</div>
+  <div class="service-price">$12.000</div>
+  <div class="service-time">Plan 30 días - Sin anuncios y reproducción en segundo plano</div>
+  <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20YouTube%20Premium%20por%2030%20días" target="_blank">Pedir ahora</a>
+</div>
           <div class="card service">
             <div class="service-preview">
               <span style="color:#ff2c55; font-size:1.4rem;">CapCut Pro</span>
