@@ -279,15 +279,31 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Estilo para los logos pequeños de la vista previa */
+    .mini-logo-bg {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      object-fit: contain;
+      opacity: 0.8;
     }
 
     .mini-card span {
       font-weight: 700;
       font-size: 0.95rem;
+      z-index: 2;
     }
 
     .mini-card small {
       color: var(--muted);
+      z-index: 2;
     }
 
     section {
@@ -310,10 +326,10 @@
     }
 
     .catalog {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 18px;
-}
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+    }
 
     .card {
       background: var(--card);
@@ -349,26 +365,21 @@
       height: 120px;
       border-radius: 14px;
       margin-bottom: 16px;
-      background:
-        linear-gradient(90deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)),
-        linear-gradient(135deg, rgba(91,167,255,0.25), rgba(138,92,255,0.25));
+      background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.1);
-      filter: blur(0.2px);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #ffffffcc;
-      font-weight: 700;
-      letter-spacing: 0.4px;
       overflow: hidden;
       position: relative;
     }
 
+    /* Estilo para ajustar las imágenes del catálogo de manera profesional */
     .service-preview img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      border-radius: 12px;
+      object-fit: contain; /* Evita que el logo se deforme o corte */
+      padding: 15px; /* Margen elegante interno para el logo */
       transition: transform 0.4s ease, filter 0.4s ease;
     }
 
@@ -791,46 +802,55 @@
           <div class="preview-title">Vista previa de servicios</div>
           <div class="mini-grid">
             <div class="mini-card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix" class="mini-logo-bg">
               <span style="color:#e50914;">Netflix</span>
               <small>$15.000 / 30 días</small>
             </div>
             <div class="mini-card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" alt="Disney+" class="mini-logo-bg">
               <span style="color:#00A8E1;">Disney+</span>
               <small>$12.000 / 30 días</small>
             </div>
             <div class="mini-card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg" alt="Prime Video" class="mini-logo-bg">
               <span style="color:#0F79AF;">Prime Video</span>
               <small>$7.000 / 30 días</small>
             </div>
             <div class="mini-card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Max_logo.svg" alt="Max" class="mini-logo-bg">
               <span style="color:#ffffff;">Max</span>
               <small>$7.000 / 30 días</small>
             </div>
             <div class="mini-card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Crunchyroll_Logo.svg" alt="Crunchyroll" class="mini-logo-bg">
               <span style="color:#f47521;">Crunchyroll</span>
               <small>$7.000 / 30 días</small>
             </div>
             <div class="mini-card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg" alt="Spotify" class="mini-logo-bg">
               <span style="color:#1DB954;">Spotify Premium</span>
               <small>$12.000 / 30 días</small>
             </div>
             <div class="mini-card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/CapCut_logo.svg" alt="CapCut Pro" class="mini-logo-bg">
               <span style="color:#ff2c55;">CapCut Pro</span>
               <small>$25.000 / 30 días</small>
             </div>
             <div class="mini-card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT Premium" class="mini-logo-bg">
               <span style="color:#10a37f;">ChatGPT Premium</span>
               <small>$25.000 / 30 días</small>
             </div>
             <div class="mini-card">
-  <span style="color:#00AEEF;">Paramount+</span>
-  <small>$8.000 / 30 días</small>
-</div>
-
-<div class="mini-card">
-  <span style="color:#FF0000;">YouTube Premium</span>
-  <small>$12.000 / 30 días</small>
-</div>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Paramount%2B_logo.svg" alt="Paramount+" class="mini-logo-bg">
+              <span style="color:#00AEEF;">Paramount+</span>
+              <small>$8.000 / 30 días</small>
+            </div>
+            <div class="mini-card">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo_2015.svg" alt="YouTube Premium" class="mini-logo-bg">
+              <span style="color:#FF0000;">YouTube Premium</span>
+              <small>$12.000 / 30 días</small>
+            </div>
           </div>
         </div>
       </div>
@@ -844,9 +864,10 @@
         </div>
 
         <div class="catalog">
+          <!-- Netflix -->
           <div class="card service featured">
             <div class="service-preview">
-              <span style="color:#e50914; font-size:1.5rem;">Netflix</span>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix">
             </div>
             <div class="service-name">Netflix Premium</div>
             <div class="service-price">$15.000</div>
@@ -854,9 +875,10 @@
             <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20Netflix%20por%2030%20días" target="_blank">Pedir ahora</a>
           </div>
 
+          <!-- Disney+ -->
           <div class="card service">
             <div class="service-preview">
-              <span style="color:#00A8E1; font-size:1.5rem;">Disney+</span>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" alt="Disney+">
             </div>
             <div class="service-name">Disney+ Estándar</div>
             <div class="service-price">$12.000</div>
@@ -864,9 +886,10 @@
             <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20Disney+%20por%2030%20días" target="_blank">Pedir ahora</a>
           </div>
 
+          <!-- Prime Video -->
           <div class="card service">
             <div class="service-preview">
-              <span style="color:#0F79AF; font-size:1.5rem;">Prime Video</span>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/1/11/Amazon_Prime_Video_logo.svg" alt="Prime Video">
             </div>
             <div class="service-name">Prime Video</div>
             <div class="service-price">$7.000</div>
@@ -874,9 +897,10 @@
             <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20Prime%20Video%20por%2030%20días" target="_blank">Pedir ahora</a>
           </div>
 
+          <!-- Max -->
           <div class="card service">
             <div class="service-preview">
-              <span style="color:#ffffff; font-size:1.5rem;">Max</span>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Max_logo.svg" alt="Max">
             </div>
             <div class="service-name">Max (HBO)</div>
             <div class="service-price">$7.000</div>
@@ -884,9 +908,10 @@
             <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20Max%20por%2030%20días" target="_blank">Pedir ahora</a>
           </div>
 
+          <!-- Crunchyroll -->
           <div class="card service">
             <div class="service-preview">
-              <span style="color:#f47521; font-size:1.5rem;">Crunchyroll</span>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/Crunchyroll_Logo.svg" alt="Crunchyroll">
             </div>
             <div class="service-name">Crunchyroll</div>
             <div class="service-price">$7.000</div>
@@ -894,36 +919,43 @@
             <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20Crunchyroll%20por%2030%20días" target="_blank">Pedir ahora</a>
           </div>
 
+          <!-- Spotify -->
           <div class="card service">
             <div class="service-preview">
-              <span style="color:#1DB954; font-size:1.5rem;">Spotify</span>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg" alt="Spotify">
             </div>
             <div class="service-name">Spotify Premium</div>
             <div class="service-price">$12.000</div>
             <div class="service-time">Plan 30 días - Música ilimitada offline</div>
             <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20Spotify%20Premium%20por%2030%20días" target="_blank">Pedir ahora</a>
           </div>
-          <div class="card service">
-  <div class="service-preview">
-    <span style="color:#00AEEF; font-size:1.4rem;">Paramount+</span>
-  </div>
-  <div class="service-name">Paramount+</div>
-  <div class="service-price">$8.000</div>
-  <div class="service-time">Plan 30 días - Acceso completo</div>
-  <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20Paramount+%20por%2030%20días" target="_blank">Pedir ahora</a>
-</div>
-          <div class="card service">
-  <div class="service-preview">
-    <span style="color:#FF0000; font-size:1.4rem;">YouTube Premium</span>
-  </div>
-  <div class="service-name">YouTube Premium</div>
-  <div class="service-price">$12.000</div>
-  <div class="service-time">Plan 30 días - Sin anuncios y reproducción en segundo plano</div>
-  <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20YouTube%20Premium%20por%2030%20días" target="_blank">Pedir ahora</a>
-</div>
+
+          <!-- Paramount+ -->
           <div class="card service">
             <div class="service-preview">
-              <span style="color:#ff2c55; font-size:1.4rem;">CapCut Pro</span>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Paramount%2B_logo.svg" alt="Paramount+">
+            </div>
+            <div class="service-name">Paramount+</div>
+            <div class="service-price">$8.000</div>
+            <div class="service-time">Plan 30 días - Acceso completo</div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20Paramount+%20por%2030%20días" target="_blank">Pedir ahora</a>
+          </div>
+
+          <!-- YouTube Premium -->
+          <div class="card service">
+            <div class="service-preview">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo_2015.svg" alt="YouTube Premium">
+            </div>
+            <div class="service-name">YouTube Premium</div>
+            <div class="service-price">$12.000</div>
+            <div class="service-time">Plan 30 días - Sin anuncios y reproducción en segundo plano</div>
+            <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20YouTube%20Premium%20por%2030%20días" target="_blank">Pedir ahora</a>
+          </div>
+
+          <!-- CapCut Pro -->
+          <div class="card service">
+            <div class="service-preview">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/CapCut_logo.svg" alt="CapCut Pro">
             </div>
             <div class="service-name">CapCut Pro</div>
             <div class="service-price">$25.000</div>
@@ -931,9 +963,10 @@
             <a class="btn btn-primary" href="https://wa.me/573154712844?text=Hola,%20quiero%20CapCut%20Pro%20por%2030%20días" target="_blank">Pedir ahora</a>
           </div>
 
+          <!-- ChatGPT Premium -->
           <div class="card service">
             <div class="service-preview">
-              <span style="color:#10a37f; font-size:1.4rem;">ChatGPT Premium</span>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg" alt="ChatGPT Premium">
             </div>
             <div class="service-name">ChatGPT Premium</div>
             <div class="service-price">$25.000</div>
@@ -1067,6 +1100,6 @@
     </div>
   </footer>
 
-  <a href="https://wa.me/573154712844?text=Hola,%20vengo%20de%20la%20página%20web" class="whatsapp-float" target="_blank">📲</a>
+  <a href="https://wa.me/573154712844?text=Hola,%20me%20interesa%20una%20plataforma" class="whatsapp-float" target="_blank">📲</a>
 </body>
 </html>
